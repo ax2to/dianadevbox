@@ -169,7 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Ax2to\Lusers\LusersServiceProvider::class,
+        //Ax2to\Lusers\LusersServiceProvider::class,
 
         /*
          * Application Service Providers...
