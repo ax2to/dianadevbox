@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Issue\CreateRequest;
 use App\Http\Requests\Issue\UpdateRequest;
 use App\Models\IssueModel;
+use App\Models\WorkLogModel;
 use Auth;
-use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
@@ -99,6 +99,14 @@ class IssueController extends Controller
     {
         $issue->status_id = $status_id;
         $issue->save();
+
+        //TODO move to events
+        $workLog = new WorkLogModel();
+        if ($status_id == 3) {
+            $workLog->startLog($issue);
+        } else {
+            $workLog->stopLog();
+        }
 
         return redirect()->route('issues.show', $issue);
     }

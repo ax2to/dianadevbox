@@ -15,7 +15,7 @@ class WorkLogController extends Controller
      */
     public function index()
     {
-        $workLogs = WorkLogModel::all();
+        $workLogs = WorkLogModel::where('in_progress', false)->get();
 
         return view('work-logs.index', compact('workLogs'));
     }
@@ -52,35 +52,41 @@ class WorkLogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param WorkLogModel $workLog
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(WorkLogModel $workLog)
     {
-        //
+        return view('work-logs.show', compact('workLog'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param WorkLogModel $workLog
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(WorkLogModel $workLog)
     {
-        //
+        return view('work-logs.edit', compact('workLog'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param WorkLogModel $workLog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, WorkLogModel $workLog)
     {
-        //
+        $workLog->issue_id = $request->issue_id;
+        $workLog->worked = $workLog->convertString2DateInterval($request->worked);
+        $workLog->date = $request->date;
+        $workLog->description = $request->description;
+        $workLog->save();
+
+        return redirect()->route('work-logs.index');
     }
 
     /**

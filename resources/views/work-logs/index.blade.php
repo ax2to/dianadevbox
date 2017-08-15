@@ -16,7 +16,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-responsive table-bordered table-striped">
+                        <table class="table table-responsive table-bordered table-striped table-datagrid">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -31,7 +31,7 @@
                             @foreach($workLogs as $workLog)
                                 <tr>
                                     <td>{{ $workLog->id }}</td>
-                                    <td>{{ $workLog->worked2string }}</td>
+                                    <td>{{ link_to_route('work-logs.show', $workLog->worked2string, [$workLog]) }}</td>
                                     <td>{{ $workLog->description }}</td>
                                     <td>{{ $workLog->date }}</td>
                                     <td>{{ $workLog->issue->id }}</td>

@@ -29,7 +29,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "Tests\\": "tests/",
+      "Ax2to\\Lusers\\": "packages/ax2to/lusers/src"
     }
   },
   "scripts": {

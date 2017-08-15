@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateWorkLogsTable extends Migration
 {
@@ -20,6 +20,7 @@ class CreateWorkLogsTable extends Migration
             $table->string('worked');
             $table->dateTime('date');
             $table->text('description');
+            $table->boolean('in_progress')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
