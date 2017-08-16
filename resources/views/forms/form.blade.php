@@ -1,0 +1,1 @@
+@each('forms.vertical', $form->getElements(), 'element')
