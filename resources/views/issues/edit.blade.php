@@ -15,34 +15,15 @@
         </section>
         <section class="row">
             <div class="col-md-12">
-                {{ Form::model($issue,['route'=>['issues.update',$issue]]) }}
+                {{ $form->open() }}
+
+                {{ $form->close() }}
+
+                {{ Form::model($issue,['route'=>['issues.update',$issue], 'method'=>'PUT']) }}
                 <div class="panel panel-default">
                     <div class="panel-heading">Update Issue</div>
                     <div class="panel-body">
-                        <div class="form-group col-md-6">
-                            {{ Form::label('project_id','Project') }}
-                            {{ Form::projects('project_id',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('type_id','Issue Type') }}
-                            {{ Form::issueTypes('type_id',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-12">
-                            {{ Form::label('summary','Summary') }}
-                            {{ Form::text('summary',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-12">
-                            {{ Form::label('description','Description') }}
-                            {{ Form::textarea('description',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('priority_id','Priority') }}
-                            {{ Form::priorities('priority_id',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('assign_to','Assign to') }}
-                            {{ Form::users('assign_to',null,['class'=>'form-control']) }}
-                        </div>
+                        {!! $form->body() !!}
                     </div>
                     <div class="panel-footer text-right">
                         <a href="{{ route('issues.show',$issue) }}" class="btn btn-default">Cancel</a>

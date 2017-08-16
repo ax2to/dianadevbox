@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\IssueForm;
 use App\Http\Requests\Issue\CreateRequest;
 use App\Http\Requests\Issue\UpdateRequest;
 use App\Models\IssueModel;
@@ -66,7 +67,10 @@ class IssueController extends Controller
      */
     public function edit(IssueModel $issue)
     {
-        return view('issues.edit', compact('issue'));
+        $form = new IssueForm($this->action = route('issues.update', $issue));
+        $form->setModel($issue);
+
+        return view('issues.edit', compact('issue', 'form'));
     }
 
     /**
@@ -81,7 +85,7 @@ class IssueController extends Controller
         $issue->fill($request->only($issue->getFillable()));
         $issue->save();
 
-        return redirect()->route('issues.edit', $issue);
+        return redirect()->route('issues.show', $issue);
     }
 
     /**
