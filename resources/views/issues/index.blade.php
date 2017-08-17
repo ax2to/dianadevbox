@@ -11,21 +11,20 @@
             </div>
         </section>
         <section class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <form>
                     Filters:
                     <label>Project</label>
                     {{ Form::projects('project_id', null, ['all' => true]) }}
                     <label>Status</label>
-                    {{ Form::issueStatus('status', null, ['all' => true]) }}
+                    {{ Form::issueStatus('status_id', null, ['all' => true]) }}
                     <label>Resolution</label>
-                    {{ Form::issueResolutions('resolution', null, ['all' => true]) }}
+                    {{ Form::issueResolutions('resolution_id', null, ['all' => true]) }}
                     <label>Assigned To</label>
                     {{ Form::users('assign_to', null, ['all' => true]) }}
                     <button>Apply</button>
                 </form>
             </div>
-            <div class="col-md-4">b</div>
         </section>
         <div class="panel panel-default">
             <div class="panel-heading">Issues</div>

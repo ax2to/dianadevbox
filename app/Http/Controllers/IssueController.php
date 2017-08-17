@@ -19,13 +19,22 @@ class IssueController extends Controller
     public function index()
     {
         $issues = IssueModel::where('id', '>', 0);
-        if (request('project_id', 'all') != 'all') {
-            $issues->where('project_id', request('project_id'));
-        }
+        $issues = $this->applyFilter($issues, 'project_id');
+        $issues = $this->applyFilter($issues, 'status_id');
+        $issues = $this->applyFilter($issues, 'resolution_id');
+        $issues = $this->applyFilter($issues, 'assign_to');
 
         $issues = $issues->get();
 
         return view('issues.index', compact('issues'));
+    }
+
+    public function applyFilter($model, $filter)
+    {
+        if (request($filter, 'all') != 'all') {
+            $model->where($filter, request($filter));
+        }
+        return $model;
     }
 
     /**
