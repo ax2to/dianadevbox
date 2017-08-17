@@ -120,10 +120,10 @@ class IssueController extends Controller
 
         //TODO move to events
         $workLog = new WorkLogModel();
+        $workLog->stopLog();
+        
         if ($status_id == 3) {
             $workLog->startLog($issue);
-        } else {
-            $workLog->stopLog();
         }
 
         return redirect()->route('issues.show', $issue);

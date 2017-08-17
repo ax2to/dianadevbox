@@ -33,12 +33,6 @@ class WorkLogModel extends Model
 
     public function startLog(IssueModel $issue)
     {
-        // search in progress work log
-        $log = $this->getWorkLogInProgress();
-        if (!is_null($log)) {
-            WorkLogModel::stopLog($log->issue);
-        }
-
         // create work log
         $workLog = new WorkLogModel();
         $workLog->issue_id = $issue->id;
@@ -52,27 +46,27 @@ class WorkLogModel extends Model
         return $workLog;
     }
 
-    public function getWorkLogInProgress()
-    {
-        return WorkLogModel::where('in_progress', true)->where('user_id', \Auth::id())->get()->first();
-    }
-
     public function stopLog()
     {
         // search in progress work log
-        $log = $this->getWorkLogInProgress();
+        $logs = $this->getWorkLogInProgress();
         $now = Carbon::now();
 
-        if (is_null($log)) {
-            return null;
+        foreach ($logs as $log) {
+            //$log->worked = WorkLogModel::getIntervalSpec($now, $log->created_at);
+            $log->worked = $now->diff($log->created_at)->format('P%yY%mM%dDT%hH%iM%sS');
+            $log->in_progress = false;
+            $log->save();
+
+            $issue = $log->issue;
+            $issue->status_id = 2;
+            $issue->save();
         }
+    }
 
-        //$log->worked = WorkLogModel::getIntervalSpec($now, $log->created_at);
-        $log->worked = $now->diff($log->created_at)->format('P%yY%mM%dDT%hH%iM%sS');
-        $log->in_progress = false;
-        $log->save();
-
-        return $log;
+    public function getWorkLogInProgress()
+    {
+        return WorkLogModel::where('in_progress', true)->where('user_id', \Auth::id())->get();
     }
 
     public function convertString2DateInterval($string)
