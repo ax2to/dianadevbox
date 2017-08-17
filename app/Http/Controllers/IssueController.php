@@ -18,7 +18,12 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = IssueModel::all();
+        $issues = IssueModel::where('id', '>', 0);
+        if (request('project_id', 'all') != 'all') {
+            $issues->where('project_id', request('project_id'));
+        }
+
+        $issues = $issues->get();
 
         return view('issues.index', compact('issues'));
     }
