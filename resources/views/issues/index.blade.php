@@ -15,13 +15,13 @@
                 <form>
                     Filters:
                     <label>Project</label>
-                    {{ Form::projects('project_id', null, ['all' => true]) }}
+                    {{ Form::projects('project_id', request('project_id'), ['all' => true]) }}
                     <label>Status</label>
-                    {{ Form::issueStatus('status_id', null, ['all' => true]) }}
+                    {{ Form::issueStatus('status_id', request('status_id'), ['all' => true]) }}
                     <label>Resolution</label>
-                    {{ Form::issueResolutions('resolution_id', null, ['all' => true]) }}
+                    {{ Form::issueResolutions('resolution_id', request('resolution_id', 8), ['all' => true]) }}
                     <label>Assigned To</label>
-                    {{ Form::users('assign_to', null, ['all' => true]) }}
+                    {{ Form::users('assign_to', request('assign_to'), ['all' => true]) }}
                     <button>Apply</button>
                 </form>
             </div>

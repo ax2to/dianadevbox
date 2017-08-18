@@ -21,7 +21,7 @@ class IssueController extends Controller
         $issues = IssueModel::where('id', '>', 0);
         $issues = $this->applyFilter($issues, 'project_id');
         $issues = $this->applyFilter($issues, 'status_id');
-        $issues = $this->applyFilter($issues, 'resolution_id');
+        $issues = $this->applyFilter($issues, 'resolution_id', 8);
         $issues = $this->applyFilter($issues, 'assign_to');
 
         $issues = $issues->get();
@@ -29,10 +29,10 @@ class IssueController extends Controller
         return view('issues.index', compact('issues'));
     }
 
-    public function applyFilter($model, $filter)
+    public function applyFilter($model, $filter, $default = 'all')
     {
-        if (request($filter, 'all') != 'all') {
-            $model->where($filter, request($filter));
+        if (request($filter, $default) != 'all') {
+            $model->where($filter, request($filter, $default));
         }
         return $model;
     }
@@ -121,7 +121,7 @@ class IssueController extends Controller
         //TODO move to events
         $workLog = new WorkLogModel();
         $workLog->stopLog();
-        
+
         if ($status_id == 3) {
             $workLog->startLog($issue);
         }

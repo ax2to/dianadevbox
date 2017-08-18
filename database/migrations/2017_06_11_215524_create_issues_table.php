@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\Issue\StatusModel;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateIssuesTable extends Migration
 {
@@ -24,7 +24,7 @@ class CreateIssuesTable extends Migration
             $table->integer('status_id')->default(StatusModel::DEFAULT);
             $table->integer('assign_to');
             $table->integer('reported_by');
-            $table->integer('resolution_id')->nullable();
+            $table->integer('resolution_id')->default(8); // unresolved
             $table->timestamps();
             $table->softDeletes();
         });

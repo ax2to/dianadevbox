@@ -19,5 +19,6 @@ class IssueResolutionTableSeeder extends Seeder
         ResolutionModel::create(['name' => "Won't Fix"]);
         ResolutionModel::create(['name' => "Won't Do"]);
         ResolutionModel::create(['name' => 'Cannot Reproduce']);
+        ResolutionModel::create(['name' => 'Unresolved']);
     }
 }
