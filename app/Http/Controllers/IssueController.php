@@ -7,6 +7,7 @@ use App\Http\Requests\Issue\CreateRequest;
 use App\Http\Requests\Issue\UpdateRequest;
 use App\Models\IssueModel;
 use App\Models\WorkLogModel;
+use App\User;
 use Auth;
 
 class IssueController extends Controller
@@ -130,6 +131,14 @@ class IssueController extends Controller
             $issue->resolution_id = $resolution_id;
             $issue->save();
         }
+
+        return redirect()->route('issues.show', $issue);
+    }
+
+    public function deriveTo(IssueModel $issue, User $user)
+    {
+        $issue->assign_to = $user->id;
+        $issue->save();
 
         return redirect()->route('issues.show', $issue);
     }

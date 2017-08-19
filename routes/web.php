@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('projects', 'ProjectController');
 
     Route::get('issues/{issue}/change-status/{status}/{resolution?}', 'IssueController@changeStatus')->name('issues.change-status');
+    Route::get('issues/{issue}/derive-to/{user}', 'IssueController@deriveTo')->name('issues.derive-to');
     Route::resource('issues', 'IssueController');
 
     Route::get('work-logs/timesheet', 'WorkLogController@timesheet')->name('work-logs.timesheet');

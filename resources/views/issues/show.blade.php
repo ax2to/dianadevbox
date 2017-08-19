@@ -129,9 +129,6 @@
                                class="btn btn-primary">Reopen</a>
                         @endcan
                         @can('close',$issue)
-                        <!--
-                            <a href="{{ route('issues.change-status',[$issue,5]) }}"
-                               class="btn btn-danger">Close</a>-->
                             <span>
                                 <div class="btn-group">
                                     <button style="width: 140px" type="button" class="btn btn-danger dropdown-toggle"
@@ -168,8 +165,20 @@
                         </div>
                     </div>
                     <div class="panel-footer text-right">
-                        <a href="" class="btn btn-default">Derive</a>
-                        <a href="" class="btn btn-primary">Claim</a>
+                        <span>
+                            <div class="btn-group">
+                                <button style="width: 140px" type="button" class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Derive <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach(\App\User::orderBy('name')->orderBy('lastName')->get() as $user)
+                                        <li><a href="{{ route('issues.derive-to',[$issue,$user]) }}">{{ $user->fullName }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </span>
+                        <a href="{{ route('issues.derive-to',[$issue,1]) }}" class="btn btn-primary">Claim</a>
                     </div>
                 </div>
             </section>
