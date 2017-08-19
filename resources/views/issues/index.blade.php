@@ -68,6 +68,9 @@
                     </div>
                 </div>
             </div>
+            <div class="panel-footer">
+                {{ $issues->appends(request()->all())->links() }}
+            </div>
         </div>
     </div>
 @endsection

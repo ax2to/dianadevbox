@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IssueResolutionTableSeeder::class);
         $this->call(IssuePrioritiesTableSeeder::class);
         $this->call(IssueStatusTableSeeder::class);
+        $this->call(IssuesTableSeeder::class);
     }
 }
