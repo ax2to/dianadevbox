@@ -129,8 +129,27 @@
                                class="btn btn-primary">Reopen</a>
                         @endcan
                         @can('close',$issue)
+                        <!--
                             <a href="{{ route('issues.change-status',[$issue,5]) }}"
-                               class="btn btn-danger">Close</a>
+                               class="btn btn-danger">Close</a>-->
+                            <span>
+                                <div class="btn-group">
+                                    <button style="width: 140px" type="button" class="btn btn-danger dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Close <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,1]) }}">Done</a></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,2]) }}">Fixed</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,3]) }}">Rejected</a></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,4]) }}">Duplicate</a></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,5]) }}">Won't Fix</a></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,6]) }}">Won't Do</a></li>
+                                        <li><a href="{{ route('issues.change-status',[$issue,5,7]) }}">Cannot Reproduce</a></li>
+                                    </ul>
+                                </div>
+                            </span>
                         @endcan
                     </div>
                 </div>
@@ -183,11 +202,11 @@
     @include('issues.modal.worklog')
 @endsection
 @push('scripts')
-<script>
-    $(function () {
-        $('#btnAddWorkLog').click(function () {
-            $('#modalWorkLog').modal('show');
+    <script>
+        $(function () {
+            $('#btnAddWorkLog').click(function () {
+                $('#modalWorkLog').modal('show');
+            });
         });
-    });
-</script>
+    </script>
 @endpush

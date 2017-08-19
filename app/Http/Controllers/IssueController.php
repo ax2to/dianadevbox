@@ -113,7 +113,7 @@ class IssueController extends Controller
         //
     }
 
-    public function changeStatus(IssueModel $issue, $status_id)
+    public function changeStatus(IssueModel $issue, $status_id, $resolution_id = 8)
     {
         $issue->status_id = $status_id;
         $issue->save();
@@ -124,6 +124,11 @@ class IssueController extends Controller
 
         if ($status_id == 3) {
             $workLog->startLog($issue);
+        }
+
+        if ($status_id == 5 || $status_id == 2) {
+            $issue->resolution_id = $resolution_id;
+            $issue->save();
         }
 
         return redirect()->route('issues.show', $issue);

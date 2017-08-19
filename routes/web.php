@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UserController');
     Route::resource('projects', 'ProjectController');
 
-    Route::get('issues/{issue}/change-status/{status}', 'IssueController@changeStatus')->name('issues.change-status');
+    Route::get('issues/{issue}/change-status/{status}/{resolution?}', 'IssueController@changeStatus')->name('issues.change-status');
     Route::resource('issues', 'IssueController');
 
     Route::get('work-logs/timesheet', 'WorkLogController@timesheet')->name('work-logs.timesheet');

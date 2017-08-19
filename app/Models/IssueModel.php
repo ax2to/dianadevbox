@@ -16,6 +16,7 @@ use Illuminate\Http\UploadedFile;
  * @property int reported_by
  * @property int status_id
  * @property int assign_to
+ * @property int resolution_id
  */
 class IssueModel extends Model
 {
