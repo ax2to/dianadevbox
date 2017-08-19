@@ -34,7 +34,7 @@
                                     <td>{{ link_to_route('work-logs.show', $workLog->worked2string, [$workLog]) }}</td>
                                     <td>{{ $workLog->description }}</td>
                                     <td>{{ $workLog->date }}</td>
-                                    <td>{{ $workLog->issue->id }}</td>
+                                    <td>{{ link_to_route('issues.show',$workLog->issue->summary,[$workLog->issue]) }}</td>
                                     <td>{{ $workLog->issue->project->name }}</td>
                                 </tr>
                             @endforeach
