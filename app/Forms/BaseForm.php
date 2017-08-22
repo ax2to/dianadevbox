@@ -37,7 +37,7 @@ class BaseForm
         if ($this->isModel) {
             return FormFacade::model($this->model);
         }
-        return FormFacade::open();
+        return FormFacade::open(['url' => $this->action]);
     }
 
     public function body()

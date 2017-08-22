@@ -5,6 +5,8 @@
         {{ Form::select($element['field'], $element['data'], old($element['field']), ['class'=>'form-control']) }}
     @elseif(isset($element['type']) && $element['type'] == 'textarea')
         {{ Form::textarea($element['field'], old($element['field']), ['class'=>'form-control']) }}
+    @elseif(isset($element['type']) && $element['type'] == 'password')
+        {{ Form::password($element['field'], ['class'=>'form-control']) }}
     @else
         {{ Form::text($element['field'], old($element['field']), ['class'=>'form-control']) }}
     @endif

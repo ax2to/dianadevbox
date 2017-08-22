@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\UserForm;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,21 +29,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $form = new UserForm(route('users.store'));
+
+        return view('users.create', compact('form'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param UserRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
         $user->fill($request->only($user->getFillable()));
         $user->company_id = Auth::user()->company_id;
         $user->role_id = 2;
+        $user->password = bcrypt($request->get('password'));
         $user->save();
 
         return redirect()->route('users.index');
