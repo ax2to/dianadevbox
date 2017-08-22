@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
@@ -35,8 +36,9 @@ class WorkLogModel extends Model
     {
         // create work log
         $workLog = new WorkLogModel();
+        $workLog->company_id = Auth::user()->company_id;
         $workLog->issue_id = $issue->id;
-        $workLog->user_id = \Auth::id();
+        $workLog->user_id = Auth::id();
         $workLog->worked = '';
         $workLog->date = Carbon::now();
         $workLog->description = 'issue in progress...';
@@ -66,7 +68,7 @@ class WorkLogModel extends Model
 
     public function getWorkLogInProgress()
     {
-        return WorkLogModel::where('in_progress', true)->where('user_id', \Auth::id())->get();
+        return WorkLogModel::where('in_progress', true)->where('user_id', Auth::id())->get();
     }
 
     public function convertString2DateInterval($string)
