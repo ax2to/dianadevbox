@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IssueModel;
 use App\Models\WorkLogModel;
+use App\Timesheet;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WorkLogController extends Controller
@@ -102,8 +104,42 @@ class WorkLogController extends Controller
 
     public function timesheet()
     {
-        $days_of_month = date('t');
-        $issues = IssueModel::all();
-        return view('work-logs.timesheet', compact('days_of_month', 'issues'));
+        switch (\request('range', 'week')) {
+            case 'day':
+                $start = Carbon::now();
+                $start->addDay(\request('mod', 0));
+                $end = clone $start;
+                break;
+            case 'week':
+                $start = Carbon::now();
+                if (!$start->dayOfWeek == 1) {
+                    $start = new Carbon('last monday');
+                }
+                $start->addWeek(\request('mod', 0));
+                $end = clone $start;
+                $end->addDay(6);
+                break;
+            case 'month':
+                $start = Carbon::now();
+                $start->day(1);
+                $start->addMonth(\request('mod', 0));
+                $end = clone $start;
+                $end->day($start->daysInMonth);
+                break;
+        }
+
+        $start->hour(0)->minute(0)->second(0);
+        $end->hour(23)->minute(59)->second(59);
+
+        $timesheet = new Timesheet($start, $end);
+        if (\request('user_id', \Auth::id()) != 'all') {
+            $timesheet->setUser(User::find(\request('user_id', \Auth::id())));
+        }
+        $timesheet->build();
+
+        $users = ['all' => 'All'] + User::orderBy('name')->orderBy('lastName')->pluck('name', 'id')->toArray();
+        $params = \request()->all();
+        $mod = \request('mod', 0);
+        return view('work-logs.timesheet', compact('timesheet', 'users', 'params', 'mod'));
     }
 }
