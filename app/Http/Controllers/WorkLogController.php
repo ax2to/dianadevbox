@@ -116,7 +116,7 @@ class WorkLogController extends Controller
                 break;
             case 'week':
                 $start = Carbon::now();
-                if (!$start->dayOfWeek == 1) {
+                if ($start->dayOfWeek <> 1) {
                     $start = new Carbon('last monday');
                 }
                 $start->addWeek(\request('mod', 0));
