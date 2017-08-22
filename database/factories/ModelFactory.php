@@ -13,6 +13,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\CompanyModel;
 use App\Models\Issue\PriorityModel;
 use App\Models\Issue\ResolutionModel;
 use App\Models\Issue\StatusModel;
@@ -22,11 +23,18 @@ use App\Models\ProjectModel;
 use App\User;
 use Carbon\Carbon;
 
+$factory->define(App\Models\CompanyModel::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'description' => $faker->paragraph,
+    ];
+});
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'company_id' => '0',
+        'company_id' => CompanyModel::all()->random()->id,
         'name' => $faker->name,
         'lastName' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
@@ -38,6 +46,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\IssueModel::class, function (Faker\Generator $faker) {
     return [
+        'company_id' => CompanyModel::all()->random()->id,
         'project_id' => ProjectModel::all()->random()->id,
         'type_id' => TypeModel::all()->random()->id,
         'summary' => $faker->sentence,
@@ -54,6 +63,7 @@ $factory->define(App\Models\WorkLogModel::class, function (Faker\Generator $fake
     $dates = collect(['P0Y0M0DT1H0M0S', 'P0Y0M0DT0H40M20S', 'P0Y0M0DT3H0M0S', 'P0Y0M0DT2H30M10S']);
     $date = Carbon::now()->subDay(rand(1, 14));
     return [
+        'company_id' => CompanyModel::all()->random()->id,
         'user_id' => User::all()->random()->id,
         'issue_id' => IssueModel::all()->random()->id,
         'worked' => $dates->random(),

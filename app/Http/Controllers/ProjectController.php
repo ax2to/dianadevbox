@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectModel;
+use Auth;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = ProjectModel::all();
+        $projects = ProjectModel::where('company_id', Auth::user()->company_id)->get();
 
         return view('projects.index', compact('projects'));
     }
@@ -38,6 +39,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = new ProjectModel();
+        $project->company_id = Auth::user()->company_id;
         $project->name = $request->name;
         $project->description = $request->description;
         $project->save();

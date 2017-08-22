@@ -1,6 +1,7 @@
 <?php
 Form::macro('projects', function ($key, $default, $options) {
-    $values = \App\Models\ProjectModel::all()->pluck('name', 'id');
+    $values = \App\Models\ProjectModel::where('company_id', Auth::user()->company_id)
+        ->pluck('name', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();
     }
@@ -8,7 +9,8 @@ Form::macro('projects', function ($key, $default, $options) {
 });
 
 Form::macro('issues', function ($key, $default, $options) {
-    $values = \App\Models\IssueModel::all()->pluck('summary', 'id');
+    $values = \App\Models\IssueModel::where('company_id', Auth::user()->company_id)
+        ->pluck('summary', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();
     }
@@ -49,7 +51,8 @@ Form::macro('priorities', function ($key, $default = null, $options = []) {
 });
 
 Form::macro('users', function ($key, $default, $options) {
-    $values = \App\User::all()->pluck('name', 'id');
+    $values = \App\User::where('company_id', Auth::user()->company_id)
+        ->pluck('name', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();
     }

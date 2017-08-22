@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WorkLogModel;
 use App\Timesheet;
 use App\User;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class WorkLogController extends Controller
      */
     public function index()
     {
-        $workLogs = WorkLogModel::where('in_progress', false)->get();
+        $workLogs = WorkLogModel::where('company_id', Auth::user()->company_id)
+            ->where('in_progress', false)
+            ->get();
 
         return view('work-logs.index', compact('workLogs'));
     }
@@ -41,8 +44,9 @@ class WorkLogController extends Controller
     public function store(Request $request)
     {
         $workLog = new WorkLogModel();
+        $workLog->company_id = Auth::user()->company_id;
         $workLog->issue_id = $request->issue_id;
-        $workLog->user_id = \Auth::id();
+        $workLog->user_id = Auth::id();
         $workLog->worked = $workLog->convertString2DateInterval($request->worked);
         $workLog->date = $request->date;
         $workLog->description = $request->description;
@@ -132,12 +136,14 @@ class WorkLogController extends Controller
         $end->hour(23)->minute(59)->second(59);
 
         $timesheet = new Timesheet($start, $end);
-        if (\request('user_id', \Auth::id()) != 'all') {
-            $timesheet->setUser(User::find(\request('user_id', \Auth::id())));
+        if (\request('user_id', Auth::id()) != 'all') {
+            $timesheet->setUser(User::find(\request('user_id', Auth::id())));
         }
         $timesheet->build();
 
-        $users = ['all' => 'All'] + User::orderBy('name')->orderBy('lastName')->pluck('name', 'id')->toArray();
+        $users = ['all' => 'All'] + User::where('company_id', Auth::user()->company_id)
+                ->orderBy('name')->orderBy('lastName')
+                ->pluck('name', 'id')->toArray();
         $params = \request()->all();
         $mod = \request('mod', 0);
         return view('work-logs.timesheet', compact('timesheet', 'users', 'params', 'mod'));

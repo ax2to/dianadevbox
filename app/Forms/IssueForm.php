@@ -6,6 +6,7 @@ use App\Models\Issue\PriorityModel;
 use App\Models\Issue\TypeModel;
 use App\Models\ProjectModel;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class IssueForm extends BaseForm
 {
@@ -18,7 +19,7 @@ class IssueForm extends BaseForm
         $project->label = 'Project';
         $project->class = 'col-md-6';
         $project->type = 'select';
-        $project->data = ProjectModel::all()->pluck('name', 'id');
+        $project->data = ProjectModel::where('company_id', Auth::user()->company_id)->pluck('name', 'id');
 
         $issueType = new Element();
         $issueType->name = 'type_id';
@@ -34,7 +35,7 @@ class IssueForm extends BaseForm
         $priority->data = PriorityModel::all()->pluck('name', 'id');
 
         $assign_to = new Element('assign_to', 'Assign To', 'select', 'col-md-6');
-        $assign_to->data = User::all()->pluck('name', 'id');
+        $assign_to->data = User::where('company_id', Auth::user()->company_id)->pluck('name', 'id');
 
         $this->addElement($project);
         $this->addElement($issueType);

@@ -10,6 +10,7 @@ class ProjectModel extends Model
 
     public function issues()
     {
-        return $this->hasMany(IssueModel::class, 'project_id');
+        return $this->hasMany(IssueModel::class, 'project_id')
+            ->where('company_id', \Auth::user()->company_id);
     }
 }

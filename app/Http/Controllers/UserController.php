@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('company_id', Auth::user()->company_id)->get();
 
         return view('users.index', compact('users'));
     }
@@ -39,7 +40,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->fill($request->only($user->getFillable()));
-        $user->company_id = 0;
+        $user->company_id = Auth::user()->company_id;
         $user->role_id = 2;
         $user->save();
 

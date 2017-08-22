@@ -5,6 +5,7 @@ namespace App;
 use App\Models\IssueModel;
 use App\Models\ProjectModel;
 use App\Models\WorkLogModel;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -115,7 +116,8 @@ class Timesheet
      */
     private function getWorkLogsBaseQuery()
     {
-        $query = WorkLogModel::whereBetween('date', [$this->start, $this->end])
+        $query = WorkLogModel::where('company_id', Auth::user()->company_id)
+            ->whereBetween('date', [$this->start, $this->end])
             ->where('in_progress', false);
 
         if (!is_null($this->user)) {
