@@ -196,7 +196,7 @@
                                     @endif
                                     <td>{{ $workLog->description }}</td>
                                     <td>{{ $workLog->user->fullName }}</td>
-                                    <td class="text-right">{{ $workLog->created_at->format('Y-m-d') }}</td>
+                                    <td class="text-right">{{ $workLog->date->format('Y-m-d') }}</td>
                                 </tr>
                             @endforeach
                         </table>
