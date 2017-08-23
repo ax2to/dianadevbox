@@ -12,8 +12,6 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        ProjectModel::create(['name' => 'DianaDevBox']);
-        ProjectModel::create(['name' => 'SimpleM2M']);
-        ProjectModel::create(['name' => 'Wortix']);
+        factory(ProjectModel::class, 3)->create();
     }
 }

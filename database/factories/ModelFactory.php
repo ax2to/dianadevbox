@@ -44,6 +44,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\ProjectModel::class, function (Faker\Generator $faker) {
+    return [
+        'company_id' => CompanyModel::all()->random()->id,
+        'name' => $faker->company,
+        'description' => $faker->paragraph
+    ];
+});
+
 $factory->define(App\Models\IssueModel::class, function (Faker\Generator $faker) {
     return [
         'company_id' => CompanyModel::all()->random()->id,
