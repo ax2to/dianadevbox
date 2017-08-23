@@ -2,13 +2,21 @@
 
 namespace App\Models;
 
+use App\User;
 use Auth;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class WorkLogModel
+ * @package App\Models
+ */
 class WorkLogModel extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'worklogs';
     protected $dates = ['date'];
 
@@ -114,5 +122,10 @@ class WorkLogModel extends Model
     public function issue()
     {
         return $this->belongsTo(IssueModel::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

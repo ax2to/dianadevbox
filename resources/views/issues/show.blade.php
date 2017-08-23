@@ -187,35 +187,25 @@
                     <div class="panel-heading">Work log</div>
                     <div class="panel-body">
                         <table class="table">
-                            <tr>
-                                <th>Alan Tell Oyola</th>
-                                <th>10 H</th>
-                            </tr>
-                            <tr>
-                                <td>tesintgf1</td>
-                                <td>3H</td>
-                            </tr>
-                            <tr>
-                                <td>alka dkjad jakldj kaljdklaj</td>
-                                <td>7H</td>
-                            </tr>
+                            @foreach($issue->workLogs as $workLog)
+                                <tr>
+                                    @if($workLog->in_progress)
+                                        <td>working</td>
+                                    @else
+                                        <td>{{ link_to_route('work-logs.show',$workLog->worked2string,[$workLog]) }}</td>
+                                    @endif
+                                    <td>{{ $workLog->description }}</td>
+                                    <td>{{ $workLog->user->fullName }}</td>
+                                    <td class="text-right">{{ $workLog->created_at->format('Y-m-d') }}</td>
+                                </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="panel-footer text-right">
-                        <button id="btnAddWorkLog" class="btn btn-primary">Add</button>
+                        <a href="{{ route('work-logs.create') }}" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </section>
         </div>
     </div>
-    @include('issues.modal.worklog')
 @endsection
-@push('scripts')
-    <script>
-        $(function () {
-            $('#btnAddWorkLog').click(function () {
-                $('#modalWorkLog').modal('show');
-            });
-        });
-    </script>
-@endpush
