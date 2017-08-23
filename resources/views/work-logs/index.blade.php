@@ -31,7 +31,7 @@
                             @foreach($workLogs as $workLog)
                                 <tr>
                                     <td>{{ $workLog->id }}</td>
-                                    <td>{{ link_to_route('work-logs.show', $workLog->worked2string, [$workLog]) }}</td>
+                                    <td>{{ link_to_route('work-logs.show', $workLog->worked, [$workLog]) }}</td>
                                     <td>{{ $workLog->description }}</td>
                                     <td>{{ $workLog->date }}</td>
                                     <td>{{ link_to_route('issues.show',$workLog->issue->summary,[$workLog->issue]) }}</td>
@@ -42,6 +42,9 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="panel-footer">
+                {{ $workLogs->links() }}
             </div>
         </div>
     </div>

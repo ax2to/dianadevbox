@@ -154,7 +154,7 @@ class Timesheet
         if ($workLogs->count() > 0) {
             $dateTime = (new \DateTime())->setTimestamp(0);
             foreach ($workLogs as $workLog) {
-                $interval = new \DateInterval($workLog->worked);
+                $interval = new \DateInterval($workLog->worked_interval);
                 $dateTime->add($interval);
             }
             $hours = $dateTime->getTimestamp() / 60 / 60;
@@ -176,7 +176,7 @@ class Timesheet
         if ($workLogs->count() > 0) {
             $dateTime = (new \DateTime())->setTimestamp(0);
             foreach ($workLogs as $workLog) {
-                $interval = new \DateInterval($workLog->worked);
+                $interval = new \DateInterval($workLog->worked_interval);
                 $dateTime->add($interval);
             }
             $hours = $dateTime->getTimestamp() / 60 / 60;
@@ -197,7 +197,7 @@ class Timesheet
         if ($workLogs->count() > 0) {
             $dateTime = (new \DateTime())->setTimestamp(0);
             foreach ($workLogs as $workLog) {
-                $interval = new \DateInterval($workLog->worked);
+                $interval = new \DateInterval($workLog->worked_interval);
                 $dateTime->add($interval);
             }
             $hours = $dateTime->getTimestamp() / 60 / 60;

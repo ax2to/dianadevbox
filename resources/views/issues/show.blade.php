@@ -192,7 +192,7 @@
                                     @if($workLog->in_progress)
                                         <td>working</td>
                                     @else
-                                        <td>{{ link_to_route('work-logs.show',$workLog->worked2string,[$workLog]) }}</td>
+                                        <td>{{ link_to_route('work-logs.show',$workLog->worked,[$workLog]) }}</td>
                                     @endif
                                     <td>{{ $workLog->description }}</td>
                                     <td>{{ $workLog->user->fullName }}</td>

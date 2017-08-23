@@ -20,7 +20,8 @@ class WorkLogController extends Controller
     {
         $workLogs = WorkLogModel::where('company_id', Auth::user()->company_id)
             ->where('in_progress', false)
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate();
 
         return view('work-logs.index', compact('workLogs'));
     }
@@ -44,12 +45,9 @@ class WorkLogController extends Controller
     public function store(Request $request)
     {
         $workLog = new WorkLogModel();
+        $workLog->fill($request->only($workLog->getFillable()));
         $workLog->company_id = Auth::user()->company_id;
-        $workLog->issue_id = $request->issue_id;
         $workLog->user_id = Auth::id();
-        $workLog->worked = $workLog->convertString2DateInterval($request->worked);
-        $workLog->date = $request->date;
-        $workLog->description = $request->description;
         $workLog->save();
 
         return redirect()->route('work-logs.index');
@@ -86,10 +84,7 @@ class WorkLogController extends Controller
      */
     public function update(Request $request, WorkLogModel $workLog)
     {
-        $workLog->issue_id = $request->issue_id;
-        $workLog->worked = $workLog->convertString2DateInterval($request->worked);
-        $workLog->date = $request->date;
-        $workLog->description = $request->description;
+        $workLog->fill($request->only($workLog->getFillable()));
         $workLog->save();
 
         return redirect()->route('work-logs.index');

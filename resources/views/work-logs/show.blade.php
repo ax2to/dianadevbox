@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             {{ Form::label('worked','Worked') }}
-                            <p>{{ $workLog->worked2string }}</p>
+                            <p>{{ $workLog->worked }}</p>
                         </div>
                         <div class="form-group col-md-6">
                             {{ Form::label('date','Date') }}

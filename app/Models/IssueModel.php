@@ -91,7 +91,7 @@ class IssueModel extends Model
         $workLogs = $this->workLogs()->whereDate('date', '=', date($date))->get();
         $dateTime = (new \DateTime())->setTimestamp(0);
         foreach ($workLogs as $workLog) {
-            $interval = new \DateInterval($workLog->worked);
+            $interval = new \DateInterval($workLog->worked_interval);
             $dateTime->add($interval);
         }
         $hours = $dateTime->getTimestamp() / 60 / 60;
@@ -108,7 +108,7 @@ class IssueModel extends Model
         $workLogs = $this->workLogs;
         $dateTime = (new \DateTime())->setTimestamp(0);
         foreach ($workLogs as $workLog) {
-            $interval = new \DateInterval($workLog->worked);
+            $interval = new \DateInterval($workLog->worked_interval);
             $dateTime->add($interval);
         }
         $hours = $dateTime->getTimestamp() / 60 / 60;

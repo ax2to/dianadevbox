@@ -24,11 +24,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             {{ Form::label('worked','Worked') }}
-                            {{ Form::text('worked', old('worked', '1H'), ['class'=>'form-control']) }}
+                            {{ Form::text('worked', null, ['class'=>'form-control']) }}
                         </div>
                         <div class="form-group col-md-6">
                             {{ Form::label('date','Date') }}
-                            {{ Form::text('date', old('date',date('Y-m-d H:i:s')),['class'=>'form-control']) }}
+                            {{ Form::text('date', null,['class'=>'form-control']) }}
                         </div>
                         <div class="form-group col-md-12">
                             {{ Form::label('description','Description') }}

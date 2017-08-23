@@ -19,26 +19,7 @@ class WorkLogModel extends Model
      */
     protected $table = 'worklogs';
     protected $dates = ['date'];
-
-    public static function getIntervalSpec(Carbon $alpha, Carbon $omega)
-    {
-        $intvl = $alpha->diff($omega);
-
-        $date = NULL;
-        if ($intvl->y) $date .= $intvl->y . 'Y';
-        if ($intvl->m) $date .= $intvl->m . 'M';
-        if ($intvl->d) $date .= $intvl->d . 'D';
-
-        $time = NULL;
-        if ($intvl->h) $time .= $intvl->h . 'H';
-        if ($intvl->i) $time .= $intvl->i . 'M';
-        if ($intvl->s) $time .= $intvl->s . 'S';
-        if ($time) $time = 'T' . $time;
-
-        $text = 'P' . $date . $time;
-        if ($text == 'P') return 'PT0S';
-        return $text;
-    }
+    protected $fillable = ['issue_id', 'worked', 'date', 'description'];
 
     public function startLog(IssueModel $issue)
     {
@@ -47,7 +28,7 @@ class WorkLogModel extends Model
         $workLog->company_id = Auth::user()->company_id;
         $workLog->issue_id = $issue->id;
         $workLog->user_id = Auth::id();
-        $workLog->worked = '';
+        $workLog->worked = '0H';
         $workLog->date = Carbon::now();
         $workLog->description = 'issue in progress...';
         $workLog->in_progress = true;
@@ -64,7 +45,8 @@ class WorkLogModel extends Model
 
         foreach ($logs as $log) {
             //$log->worked = WorkLogModel::getIntervalSpec($now, $log->created_at);
-            $log->worked = $now->diff($log->created_at)->format('P%yY%mM%dDT%hH%iM%sS');
+            //$log->worked = $now->diff($log->created_at)->format('P%yY%mM%dDT%hH%iM%sS');
+            $log->worked = $this->convertDateInterval2String($now->diff($log->created_at));
             $log->in_progress = false;
             $log->save();
 
@@ -77,6 +59,44 @@ class WorkLogModel extends Model
     public function getWorkLogInProgress()
     {
         return WorkLogModel::where('in_progress', true)->where('user_id', Auth::id())->get();
+    }
+
+    public function convertDateInterval2String($interval)
+    {
+        $data = [];
+        $parts = explode(' ', $interval->format('%yY %mM %dD %hH %iM %sS'));
+
+        foreach ($parts as $part) {
+            $type = substr($part, -1);
+            $count = str_replace($type, '', $part);
+            if ($count > 0) {
+                $data[] = $part;
+            }
+        }
+
+        return implode(' ', $data);
+    }
+
+    public function issue()
+    {
+        return $this->belongsTo(IssueModel::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function setWorkedAttribute($worked)
+    {
+        $dateInterval = $this->convertString2DateInterval($worked);
+        $date = new Carbon($dateInterval);
+
+        $this->attributes['worked'] = strtoupper($worked);
+        $this->attributes['worked_interval'] = $dateInterval->format('P%yY%mM%dDT%hH%iM%sS');
+        $this->attributes['worked_timestamp'] = $date->timestamp;
+
+        return $this;
     }
 
     public function convertString2DateInterval($string)
@@ -103,29 +123,9 @@ class WorkLogModel extends Model
 
         $interval = 'P' . implode('', $p) . 'T' . implode('', $t);
 
-        return $interval;
-    }
-
-    public function getWorked2StringAttribute()
-    {
-        return $this->convertDateInterval2String($this->worked);
-    }
-
-    public function convertDateInterval2String($interval)
-    {
         $i = new \DateInterval($interval);
         $ci = CarbonInterval::instance($i);
 
         return $ci;
-    }
-
-    public function issue()
-    {
-        return $this->belongsTo(IssueModel::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }
