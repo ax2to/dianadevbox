@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Attachment\CreateRequest;
 use App\Models\IssueModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AttachmentController extends Controller
 {
@@ -38,10 +39,14 @@ class AttachmentController extends Controller
      */
     public function store(IssueModel $issue, CreateRequest $request)
     {
-        $destinationPath = public_path('data/issues/attachments');
+        //"issues/attachments/48-1UO6tMNR.PNG"
+        //dd(Storage::url('issues/attachments/48-1UO6tMNR.PNG'));
+
         foreach ($request->attachments as $file) {
             $filename = $issue->id . '-' . str_random(8) . '.' . $file->getClientOriginalExtension();
-            $file->move($destinationPath, $filename);
+            $path = $file->storeAs('issues/attachments', $filename);
+            Storage::setVisibility($path, 'public');
+
             $issue->attach($file, $filename);
         }
 

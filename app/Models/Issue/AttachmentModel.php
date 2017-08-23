@@ -3,6 +3,7 @@
 namespace App\Models\Issue;
 
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class AttachmentModel extends Model
 {
@@ -16,6 +17,7 @@ class AttachmentModel extends Model
 
     public function getHref()
     {
-        return asset($this->path . '/' . $this->filename);
+        return Storage::url('issues/attachments/48-1UO6tMNR.PNG');
+        //return asset($this->path . '/' . $this->filename);
     }
 }
