@@ -66,7 +66,7 @@
                                 </tr>
                                 @foreach($timesheet->getIssuesByProject($project) as $issue)
                                     <tr>
-                                        <td>{{ $issue->summary }}</td>
+                                        <td>{{ link_to_route('issues.show',$issue->summary,[$issue]) }}</td>
                                         <th class="text-center">{{ $timesheet->getHoursByIssue($issue) }}</th>
                                         @for($i = 0; $i <= $timesheet->getDays(); $i++)
                                             <td class="text-center">{{ $timesheet->getHoursByIssueInDate($issue,$timesheet->getDateByPosition($i)) }}</td>
