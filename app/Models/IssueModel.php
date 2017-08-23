@@ -67,7 +67,7 @@ class IssueModel extends Model
         $attach = new AttachmentModel();
         $attach->issue_id = $this->id;
         $attach->filename = $filename ?? $file->getFilename();
-        $attach->path = '/data/issues/attachments';
+        $attach->path = AttachmentModel::PATH_ISSUES;
         $attach->size = $file->getSize();
         $attach->mime = $file->getClientMimeType();
         $attach->extension = $file->getClientOriginalExtension();
@@ -86,11 +86,6 @@ class IssueModel extends Model
         return $this->hasMany(CommentModel::class, 'issue_id');
     }
 
-    public function workLogs()
-    {
-        return $this->hasMany(WorkLogModel::class, 'issue_id');
-    }
-
     public function workLogInHoursByDate($date)
     {
         $workLogs = $this->workLogs()->whereDate('date', '=', date($date))->get();
@@ -101,6 +96,11 @@ class IssueModel extends Model
         }
         $hours = $dateTime->getTimestamp() / 60 / 60;
         return round($hours, 1);
+    }
+
+    public function workLogs()
+    {
+        return $this->hasMany(WorkLogModel::class, 'issue_id');
     }
 
     public function workLogInHours()
