@@ -172,7 +172,7 @@
                                 Derive <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    @foreach(\App\User::orderBy('name')->orderBy('lastName')->get() as $user)
+                                    @foreach(\App\User::orderBy('name')->where('company_id',Auth::user()->company_id)->orderBy('lastName')->get() as $user)
                                         <li><a href="{{ route('issues.derive-to',[$issue,$user]) }}">{{ $user->fullName }}</a></li>
                                     @endforeach
                                 </ul>
