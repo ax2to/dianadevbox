@@ -10,6 +10,7 @@
                 </ol>
             </div>
         </section>
+        @include('flash::message')
         <section class="row">
             <div class="col-md-12">
                 <form>

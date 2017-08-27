@@ -9,7 +9,6 @@ use App\Models\IssueModel;
 use App\Models\WorkLogModel;
 use App\User;
 use Auth;
-use Carbon\Carbon;
 
 class IssueController extends Controller
 {
@@ -62,6 +61,8 @@ class IssueController extends Controller
         $issue->company_id = Auth::user()->company_id;
         $issue->reported_by = Auth::id();
         $issue->save();
+
+        flash(sprintf('The issue, %s, was created successfully.', $issue->summary))->success();
 
         return redirect()->route('issues.index');
     }
