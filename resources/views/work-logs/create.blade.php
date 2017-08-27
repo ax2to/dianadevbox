@@ -14,33 +14,18 @@
         </section>
         <section class="row">
             <div class="col-md-12">
-                {{ Form::open(['route'=>'work-logs.store']) }}
+                {{ $form->open() }}
                 <div class="panel panel-default">
                     <div class="panel-heading">Create new work log</div>
                     <div class="panel-body">
-                        <div class="form-group col-md-12">
-                            {{ Form::label('issue_id','Issue') }}
-                            {{ Form::issues('issue_id',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('worked','Worked') }}
-                            {{ Form::text('worked', old('worked', '1H'), ['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('date','Date') }}
-                            {{ Form::text('date', old('date',date('Y-m-d H:i:s')),['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-12">
-                            {{ Form::label('description','Description') }}
-                            {{ Form::textarea('description',null,['class'=>'form-control']) }}
-                        </div>
+                        {!! $form->body() !!}
                     </div>
                     <div class="panel-footer text-right">
                         <a href="{{ route('issues.index') }}" class="btn btn-default">Cancel</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
-                {{ Form::close() }}
+                {{ $form->close() }}
             </div>
         </section>
     </div>

@@ -117,7 +117,7 @@ class Timesheet
     private function getWorkLogsBaseQuery()
     {
         $query = WorkLogModel::where('company_id', Auth::user()->company_id)
-            ->whereBetween('date', [$this->start, $this->end])
+            ->whereBetween('date', [$this->start->tz('UTC'), $this->end->tz('UTC')])
             ->where('in_progress', false);
 
         if (!is_null($this->user)) {

@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Models\RoleModel;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property int id
@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lastName', 'email', 'password', 'company_id'
+        'name', 'lastName', 'timezone', 'email', 'password', 'company_id'
     ];
 
     /**

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\BaseForm;
+use App\Forms\Element;
 use App\Forms\UserForm;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -66,24 +68,36 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $form = new UserForm(route('users.update', $user), 'PUT');
+        $form->setModel($user);
+        $form->removeElement('password');
+        $form->removeElement('password_confirmation');
+
+        $form2 = new BaseForm(route('users.change-password', $user));
+        $form2->addElement(new Element('password', 'Password', 'password'));
+        $form2->addElement(new Element('password_confirmation', 'Confirm Password', 'password'));
+
+        return view('users.edit', compact('user', 'form', 'form2'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param UserRequest $request
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $user->fill($request->only($user->getFillable()));
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -95,5 +109,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePassword(ChangePasswordRequest $request, User $user)
+    {
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 }

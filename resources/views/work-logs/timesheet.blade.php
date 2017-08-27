@@ -55,7 +55,7 @@
                                 <th>Summary</th>
                                 <th class="text-center">Hours</th>
                                 @for($i = 0; $i <= $timesheet->getDays(); $i++)
-                                    <th class="text-center">{{ date('D',mktime(0,0,0,date('m'),$i)) }}</th>
+                                    <th class="text-center">{{ date('D',mktime(0,0,0,date('m'),$timesheet->getStart()->day+$i)) }}</th>
                                 @endfor
                             </tr>
                             </thead>

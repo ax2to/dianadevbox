@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class WorkLogModel
+ * @property  Carbon date
  * @package App\Models
  */
 class WorkLogModel extends Model
@@ -19,7 +20,7 @@ class WorkLogModel extends Model
      */
     protected $table = 'worklogs';
     protected $dates = ['date'];
-    protected $fillable = ['issue_id', 'worked', 'date', 'description'];
+    protected $fillable = ['issue_id', 'worked', 'description'];
 
     public function startLog(IssueModel $issue)
     {
@@ -127,5 +128,11 @@ class WorkLogModel extends Model
         $ci = CarbonInterval::instance($i);
 
         return $ci;
+    }
+
+    public function getDateAttribute($value)
+    {
+        $date = $this->asDateTime($value);
+        return $date->tz('America/Lima');
     }
 }

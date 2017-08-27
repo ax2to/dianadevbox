@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id');
             $table->string('name');
             $table->string('lastName');
+            $table->string('timezone')->default('America/Lima');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

@@ -14,33 +14,18 @@
         </section>
         <section class="row">
             <div class="col-md-12">
-                {{ Form::model($workLog, ['route'=>['work-logs.update', $workLog], 'method'=>'PUT']) }}
+                {{ $form->open() }}
                 <div class="panel panel-default">
                     <div class="panel-heading">Update Work log # {{ $workLog->id }}</div>
                     <div class="panel-body">
-                        <div class="form-group col-md-12">
-                            {{ Form::label('issue_id','Issue') }}
-                            {{ Form::issues('issue_id',null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('worked','Worked') }}
-                            {{ Form::text('worked', null, ['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('date','Date') }}
-                            {{ Form::text('date', null,['class'=>'form-control']) }}
-                        </div>
-                        <div class="form-group col-md-12">
-                            {{ Form::label('description','Description') }}
-                            {{ Form::textarea('description',null,['class'=>'form-control']) }}
-                        </div>
+                        {!! $form->body() !!}
                     </div>
                     <div class="panel-footer text-right">
                         <a href="{{ route('work-logs.index') }}" class="btn btn-default">Cancel</a>
                         <button class="btn btn-primary">Save</button>
                     </div>
                 </div>
-                {{ Form::close() }}
+                {{ $form->close() }}
             </div>
         </section>
     </div>

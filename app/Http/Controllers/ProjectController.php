@@ -44,6 +44,8 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->save();
 
+        flash(sprintf('The project, %s, was created successfully.', $project->name))->success();
+
         return redirect()->route('projects.index');
     }
 

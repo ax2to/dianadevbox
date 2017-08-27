@@ -43,8 +43,7 @@
                         </div>
                     </div>
                     <div class="panel-footer text-right">
-                        <button class="btn btn-primary">Update</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <a href="{{ route('users.edit',$user) }}" class="btn btn-primary">Update</a>
                     </div>
                 </div>
             </section>

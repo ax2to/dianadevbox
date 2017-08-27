@@ -202,7 +202,7 @@
                         </table>
                     </div>
                     <div class="panel-footer text-right">
-                        <a href="{{ route('work-logs.create') }}" class="btn btn-primary">Add</a>
+                        <a href="{{ route('work-logs.create',['issue_id'=>$issue]) }}" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </section>

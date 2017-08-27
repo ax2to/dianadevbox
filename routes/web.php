@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'ProjectController@index')->name('projects.index');
 
+    Route::post('users/{user}/change-password', 'UserController@changePassword')->name('users.change-password');
     Route::resource('users', 'UserController');
     Route::resource('projects', 'ProjectController');
 
@@ -35,4 +36,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['namespace' => 'Issue', 'prefix' => 'issues', 'as' => 'issues.'], function () {
         Route::post('{issue}/comments/store', 'CommentController@store')->name('comments.store');
     });
+});
+
+Route::get('testing', function () {
+    $now = \Carbon\Carbon::now();
+    $now->tz = new DateTimeZone('America/Lima');
+    $now->day = 15;
+    dump($now);
+    $logs = \App\Models\WorkLogModel::whereDate('created_at', $now)->get();
+    foreach ($logs as $log) {
+        dump($log->created_at);
+    }
 });

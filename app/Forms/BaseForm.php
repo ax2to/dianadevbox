@@ -13,9 +13,15 @@ class BaseForm
     private $model;
     private $elements = [];
 
-    public function __construct($action = '')
+    public function __construct($action = '', $method = 'POST')
     {
         $this->action = $action;
+        $this->method = $method;
+        $this->init();
+    }
+
+    public function init()
+    {
     }
 
     public function setModel($model)
@@ -35,9 +41,9 @@ class BaseForm
     public function open()
     {
         if ($this->isModel) {
-            return FormFacade::model($this->model);
+            return FormFacade::model($this->model, ['url' => $this->action, 'method' => $this->method]);
         }
-        return FormFacade::open(['url' => $this->action]);
+        return FormFacade::open(['url' => $this->action, 'method' => $this->method]);
     }
 
     public function body()
@@ -57,21 +63,22 @@ class BaseForm
 
     public function addElement($element)
     {
-        $this->elements[] = $element;
+        $this->elements[$element->name] = $element;
     }
 
     public function getElements()
     {
-        $data = [];
-        foreach ($this->elements as $element) {
-            $data[] = [
-                'field' => $element->name,
-                'label' => $element->label,
-                'class' => $element->class,
-                'type' => $element->type,
-                'data' => $element->data
-            ];
-        }
-        return $data;
+        return $this->elements;
+    }
+
+    public function removeElement($name)
+    {
+        unset($this->elements[$name]);
+        return $this;
+    }
+
+    public function getElement($name)
+    {
+        return $this->elements[$name];
     }
 }

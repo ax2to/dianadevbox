@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\WorkLogForm;
 use App\Models\WorkLogModel;
 use App\Timesheet;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use DateTimeZone;
 use Illuminate\Http\Request;
 
 class WorkLogController extends Controller
@@ -33,7 +35,12 @@ class WorkLogController extends Controller
      */
     public function create()
     {
-        return view('work-logs.create');
+        $form = new WorkLogForm(route('work-logs.store'));
+        $form->getElement('issue_id')->setDefault(\request('issue_id', null));
+        $form->getElement('worked')->setDefault('1H');
+        $form->getElement('date')->setDefault(Carbon::now('America/Lima'));
+
+        return view('work-logs.create', compact('form'));
     }
 
     /**
@@ -46,6 +53,7 @@ class WorkLogController extends Controller
     {
         $workLog = new WorkLogModel();
         $workLog->fill($request->only($workLog->getFillable()));
+        $workLog->date = (new Carbon($request->date, 'America/Lima'))->tz('UTC');
         $workLog->company_id = Auth::user()->company_id;
         $workLog->user_id = Auth::id();
         $workLog->save();
@@ -72,7 +80,10 @@ class WorkLogController extends Controller
      */
     public function edit(WorkLogModel $workLog)
     {
-        return view('work-logs.edit', compact('workLog'));
+        $form = new WorkLogForm(route('work-logs.update', $workLog), 'PUT');
+        $form->setModel($workLog);
+
+        return view('work-logs.edit', compact('workLog', 'form'));
     }
 
     /**
@@ -85,6 +96,7 @@ class WorkLogController extends Controller
     public function update(Request $request, WorkLogModel $workLog)
     {
         $workLog->fill($request->only($workLog->getFillable()));
+        $workLog->date = (new Carbon($request->date, 'America/Lima'))->tz('UTC');
         $workLog->save();
 
         return redirect()->route('work-logs.index');
@@ -103,32 +115,34 @@ class WorkLogController extends Controller
 
     public function timesheet()
     {
+
         switch (\request('range', 'week')) {
             case 'day':
-                $start = Carbon::now();
+                $start = Carbon::now('America/Lima')->hour(0)->minute(0)->second(0);
                 $start->addDay(\request('mod', 0));
+
                 $end = clone $start;
+                $end->hour(23)->minute(59)->second(59);
                 break;
             case 'week':
-                $start = Carbon::now();
-                if ($start->dayOfWeek <> 1) {
-                    $start = new Carbon('last monday');
-                }
+                $start = Carbon::now('America/Lima')->hour(0)->minute(0)->second(0);
+                $start->day($start->day - $start->dayOfWeek + 1);
                 $start->addWeek(\request('mod', 0));
+
                 $end = clone $start;
+                $end->hour(23)->minute(59)->second(59);
                 $end->addDay(6);
                 break;
             case 'month':
-                $start = Carbon::now();
+                $start = Carbon::now('America/Lima')->hour(0)->minute(0)->second(0);
                 $start->day(1);
                 $start->addMonth(\request('mod', 0));
+
                 $end = clone $start;
+                $end->hour(23)->minute(59)->second(59);
                 $end->day($start->daysInMonth);
                 break;
         }
-
-        $start->hour(0)->minute(0)->second(0);
-        $end->hour(23)->minute(59)->second(59);
 
         $timesheet = new Timesheet($start, $end);
         if (\request('user_id', Auth::id()) != 'all') {

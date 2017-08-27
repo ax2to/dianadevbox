@@ -9,6 +9,7 @@
                 </ol>
             </div>
         </section>
+        @include('flash::message')
         <section>
             @foreach($projects as $project)
                 <div class="col-md-4">
