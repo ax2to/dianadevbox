@@ -25,6 +25,10 @@ class IssueController extends Controller
         $issues = $this->applyFilter($issues, 'resolution_id', 8);
         $issues = $this->applyFilter($issues, 'assign_to');
 
+        if (request()->has('search')) {
+            $issues->where('summary', 'Like', '%' . request('search') . '%');
+        }
+
         $issues = $issues->orderBy('id', 'desc')->paginate();
 
         return view('issues.index', compact('issues'));

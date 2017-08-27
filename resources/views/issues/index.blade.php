@@ -11,28 +11,37 @@
             </div>
         </section>
         @include('flash::message')
-        <section class="row">
-            <div class="col-md-12">
-                <form>
-                    Filters:
-                    <label>Project</label>
-                    {{ Form::projects('project_id', request('project_id'), ['all' => true]) }}
-                    <label>Status</label>
-                    {{ Form::issueStatus('status_id', request('status_id'), ['all' => true]) }}
-                    <label>Resolution</label>
-                    {{ Form::issueResolutions('resolution_id', request('resolution_id', 8), ['all' => true]) }}
-                    <label>Assigned To</label>
-                    {{ Form::users('assign_to', request('assign_to'), ['all' => true]) }}
-                    <button>Apply</button>
+        <section class="panel panel-default">
+            <div class="panel-heading">
+                Issues
+                <form class="pull-right">
+                    <div class="input-group">
+                        <input name="search" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
                 </form>
             </div>
-        </section>
-        <div class="panel panel-default">
-            <div class="panel-heading">Issues</div>
             <div class="panel-body">
+                <section class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <label>Project</label>
+                            {{ Form::projects('project_id', request('project_id'), ['all' => true, 'class' => 'select2']) }}
+                            <label>Status</label>
+                            {{ Form::issueStatus('status_id', request('status_id'), ['all' => true, 'class' => 'select2']) }}
+                            <label>Resolution</label>
+                            {{ Form::issueResolutions('resolution_id', request('resolution_id', 8), ['all' => true, 'class' => 'select2']) }}
+                            <label>Assigned To</label>
+                            {{ Form::users('assign_to', request('assign_to'), ['all' => true, 'class' => 'select2']) }}
+                            <button class="btn btn-primary">Apply</button>
+                        </form>
+                    </div>
+                </section>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-responsive table-bordered table-striped">
+                        <table class="table table-responsive table-bordered table-striped" style="margin-top: 20px">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -72,6 +81,6 @@
             <div class="panel-footer">
                 {{ $issues->appends(request()->all())->links() }}
             </div>
-        </div>
+        </section>
     </div>
 @endsection
