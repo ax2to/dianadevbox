@@ -45,7 +45,9 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return view('issues.create');
+        $form = new IssueForm(route('issues.store'));
+
+        return view('issues.create', compact('form'));
     }
 
     /**
