@@ -79,7 +79,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('users.index') }}">All</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('users.create') }}">Create</a></li>
+                            <li><a href="{{ route('users.create') }}">Create User</a></li>
                         </ul>
                     </li>
                     <!-- Authentication Links -->

@@ -22,10 +22,12 @@ class Element
     public function setData($data)
     {
         $this->data = $data;
+        return $this;
     }
 
     public function setDefault($value)
     {
         $this->default = $value;
+        return $this;
     }
 }

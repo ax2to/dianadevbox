@@ -9,7 +9,8 @@
                 </ol>
             </div>
         </section>
-        <div class="panel panel-default">
+        @include('flash::message')
+        <section class="panel panel-default">
             <div class="panel-heading">Users</div>
             <div class="panel-body">
                 <div class="row">
@@ -43,6 +44,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 @endsection

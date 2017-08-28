@@ -32,6 +32,8 @@ class UserController extends Controller
     public function create()
     {
         $form = new UserForm(route('users.store'));
+        $form->getElement('role_id')->setDefault(2);
+        $form->getElement('timezone')->setDefault('UTC');
 
         return view('users.create', compact('form'));
     }
@@ -50,6 +52,8 @@ class UserController extends Controller
         $user->role_id = 2;
         $user->password = bcrypt($request->get('password'));
         $user->save();
+
+        flash(sprintf('The user, %s, was created successfully.', $user->fullName))->success();
 
         return redirect()->route('users.index');
     }
@@ -96,6 +100,8 @@ class UserController extends Controller
     {
         $user->fill($request->only($user->getFillable()));
         $user->save();
+
+        flash(sprintf('The user, %s, was updated successfully.', $user->fullName))->success();
 
         return redirect()->route('users.index');
     }

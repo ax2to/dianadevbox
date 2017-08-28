@@ -29,9 +29,13 @@
                             <label>Role</label>
                             <p>{{ $user->role->name }}</p>
                         </div>
-                        <div class="form-group col-md-8">
+                        <div class="form-group col-md-4">
                             <label>Email</label>
                             <p>{{ $user->email }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>TimeZone</label>
+                            <p>{{ $user->timezone }}</p>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Created At</label>
