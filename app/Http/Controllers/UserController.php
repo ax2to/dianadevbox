@@ -31,9 +31,12 @@ class UserController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $form = new UserForm(route('users.store'));
-        $form->getElement('role_id')->setDefault(2);
         $form->getElement('timezone')->setDefault('UTC');
+        if ($user->can('change-role', $user)) {
+            $form->getElement('role_id')->setDefault(2);
+        }
 
         return view('users.create', compact('form'));
     }

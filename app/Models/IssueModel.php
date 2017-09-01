@@ -11,6 +11,7 @@ use App\Models\Issue\TypeModel;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property int reported_by
@@ -113,5 +114,11 @@ class IssueModel extends Model
         }
         $hours = $dateTime->getTimestamp() / 60 / 60;
         return round($hours, 1);
+    }
+
+    public function scopeAllowedProjects($query)
+    {
+        $projects = ProjectModel::AllowedForUser(Auth::user())->pluck('id');
+        return $query->whereIn('project_id', $projects);
     }
 }

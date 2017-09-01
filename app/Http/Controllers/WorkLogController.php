@@ -8,7 +8,6 @@ use App\Timesheet;
 use App\User;
 use Auth;
 use Carbon\Carbon;
-use DateTimeZone;
 use Illuminate\Http\Request;
 
 class WorkLogController extends Controller
@@ -21,6 +20,7 @@ class WorkLogController extends Controller
     public function index()
     {
         $workLogs = WorkLogModel::where('company_id', Auth::user()->company_id)
+            ->where('user_id', Auth::id())
             ->where('in_progress', false)
             ->orderBy('id', 'desc')
             ->paginate();

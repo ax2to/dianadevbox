@@ -16,7 +16,7 @@ class IssueForm extends BaseForm
         $project->label = 'Project';
         $project->class = 'col-md-6';
         $project->type = 'select';
-        $project->data = ProjectModel::where('company_id', Auth::user()->company_id)->pluck('name', 'id');
+        $project->data = $this->getProjectOptions();
 
         $issueType = new Element('type_id');
         $issueType->label = 'Issue Type';
@@ -40,6 +40,14 @@ class IssueForm extends BaseForm
         $this->addElement($description);
         $this->addElement($priority);
         $this->addElement($assign_to);
+    }
+
+    public function getProjectOptions()
+    {
+        return ProjectModel::where('company_id', Auth::user()->company_id)
+            ->allowedForUser(Auth::user())
+            ->pluck('name', 'id')
+            ->toArray();
     }
 
     public function getAssignToOptions()

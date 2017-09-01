@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\ProjectModel;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -52,35 +54,40 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param ProjectModel $project
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProjectModel $project)
     {
-        //
+        return view('projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param ProjectModel $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProjectModel $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param ProjectRequest $request
+     * @param ProjectModel $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, ProjectModel $project)
     {
-        //
+        $project->fill($request->validated());
+        $project->save();
+
+        flash(sprintf('The project, %s, was updated successfully.', $project->name))->success();
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -92,5 +99,14 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addMember(ProjectModel $project, User $user)
+    {
+        $project->members()->toggle($user);
+
+        flash(sprintf('The user, %s, was added successfully.', $user->fullName));
+
+        return redirect()->route('projects.show', $project);
     }
 }

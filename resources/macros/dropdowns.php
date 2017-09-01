@@ -1,6 +1,7 @@
 <?php
 Form::macro('projects', function ($key, $default, $options) {
     $values = \App\Models\ProjectModel::where('company_id', Auth::user()->company_id)
+        ->allowedForUser(Auth::user())
         ->pluck('name', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();

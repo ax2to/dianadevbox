@@ -6,9 +6,14 @@ use App\Models\RoleModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int role_id
+ */
 class User extends Authenticatable
 {
     use Notifiable;
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -36,5 +41,10 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(RoleModel::class);
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return User::ROLE_ADMIN == $this->role_id;
     }
 }

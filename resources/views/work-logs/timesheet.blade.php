@@ -16,29 +16,31 @@
             <div class="panel-heading">Timesheet</div>
             <div class="panel-body">
                 <section class="row">
-                    <form class="form-inline" action="{{ route('work-logs.timesheet',$params) }}">
-                        <div class="form-group col-md-6" style="margin-bottom: 20px">
-                            {{ Form::label('user_id','User') }}
-                            {{ Form::select('user_id',$users,['user_id'=>Auth::id()]+$params,['class'=>'form-control']) }}
-                            <input type="hidden" name="range" value="{{ request('range','week') }}">
-                            <input type="hidden" name="mod" value="{{ request('mod',$mod) }}">
-                            <button class="btn btn-primary">Go!</button>
+                    <div class="form-group col-md-6">
+                        @can('change-user',$timesheet)
+                            <form class="form-inline" action="{{ route('work-logs.timesheet',$params) }}">
+                                {{ Form::label('user_id','User') }}
+                                {{ Form::select('user_id',$users,['user_id'=>Auth::id()]+$params,['class'=>'form-control']) }}
+                                <input type="hidden" name="range" value="{{ request('range','week') }}">
+                                <input type="hidden" name="mod" value="{{ request('mod',$mod) }}">
+                                <button class="btn btn-primary">Go!</button>
+                            </form>
+                        @endcan
+                    </div>
+                    <div class="form-group col-md-6 text-right">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <a href="{{ route('work-logs.timesheet',['mod'=>$mod-1]+$params) }}"
+                               type="button" class="btn btn-default">&lt;</a>
+                            <a href="{{ route('work-logs.timesheet',['range'=>'day']+$params) }}"
+                               type="button" class="btn btn-default">Day</a>
+                            <a href="{{ route('work-logs.timesheet',['range'=>'week']+$params) }}"
+                               type="button" class="btn btn-default">Week</a>
+                            <a href="{{ route('work-logs.timesheet',['range'=>'month']+$params) }}"
+                               type="button" class="btn btn-default">Month</a>
+                            <a href="{{ route('work-logs.timesheet',['mod'=>$mod+1]+$params) }}"
+                               type="button" class="btn btn-default">&gt;</a>
                         </div>
-                        <div class="form-group col-md-6 text-right">
-                            <div class="btn-group" role="group" aria-label="...">
-                                <a href="{{ route('work-logs.timesheet',['mod'=>$mod-1]+$params) }}"
-                                   type="button" class="btn btn-default">&lt;</a>
-                                <a href="{{ route('work-logs.timesheet',['range'=>'day']+$params) }}"
-                                   type="button" class="btn btn-default">Day</a>
-                                <a href="{{ route('work-logs.timesheet',['range'=>'week']+$params) }}"
-                                   type="button" class="btn btn-default">Week</a>
-                                <a href="{{ route('work-logs.timesheet',['range'=>'month']+$params) }}"
-                                   type="button" class="btn btn-default">Month</a>
-                                <a href="{{ route('work-logs.timesheet',['mod'=>$mod+1]+$params) }}"
-                                   type="button" class="btn btn-default">&gt;</a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </section>
                 <div class="row">
                     <div class="col-md-12">

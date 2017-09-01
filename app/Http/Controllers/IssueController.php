@@ -19,7 +19,7 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = IssueModel::where('company_id', Auth::user()->company_id);
+        $issues = IssueModel::where('company_id', Auth::user()->company_id)->allowedProjects();
         $issues = $this->applyFilter($issues, 'project_id');
         $issues = $this->applyFilter($issues, 'status_id');
         $issues = $this->applyFilter($issues, 'resolution_id', 8);

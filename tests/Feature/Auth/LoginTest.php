@@ -24,7 +24,7 @@ class LoginTest extends TestCase
     {
         $this->visit('login')
             ->type('alan.tello@gmail.com','email')
-            ->type('123456','password')
+            ->type('1234','password')
             ->press('Login')
             ->seePageIs('/');
     }

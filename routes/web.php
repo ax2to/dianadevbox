@@ -19,6 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('users/{user}/change-password', 'UserController@changePassword')->name('users.change-password');
     Route::resource('users', 'UserController');
+
+    Route::get('projects/{project}/add-member/{user}', 'ProjectController@addMember')->name('projects.add-member');
     Route::resource('projects', 'ProjectController');
 
     Route::get('issues/{issue}/change-status/{status}/{resolution?}', 'IssueController@changeStatus')->name('issues.change-status');
