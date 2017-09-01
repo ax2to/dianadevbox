@@ -23,26 +23,9 @@ use App\Models\ProjectModel;
 use App\User;
 use Carbon\Carbon;
 
-$factory->define(App\Models\CompanyModel::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->company,
-        'description' => $faker->paragraph,
-    ];
-});
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
 
-    return [
-        'company_id' => CompanyModel::all()->random()->id,
-        'name' => $faker->name,
-        'lastName' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
-        'role_id' => 1
-    ];
-});
+
 
 $factory->define(App\Models\ProjectModel::class, function (Faker\Generator $faker) {
     return [

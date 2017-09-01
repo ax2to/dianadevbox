@@ -6,11 +6,6 @@ use App\Models\RoleModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-/**
- * @property int id
- * @property string name
- * @property string lastName
- */
 class User extends Authenticatable
 {
     use Notifiable;
