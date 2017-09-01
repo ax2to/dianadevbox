@@ -118,9 +118,10 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="https://use.fontawesome.com/d060f5688b.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="//use.fontawesome.com/d060f5688b.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="//cdn.ckeditor.com/4.7.2/standard/ckeditor.js"></script>
 <script>
     $(function () {
         // lightbox

@@ -14,18 +14,19 @@ class IssueForm extends BaseForm
     {
         $project = new Element('project_id');
         $project->label = 'Project';
-        $project->class = 'col-md-6';
+        $project->wrapper = 'col-md-6';
         $project->type = 'select';
         $project->data = $this->getProjectOptions();
 
         $issueType = new Element('type_id');
         $issueType->label = 'Issue Type';
-        $issueType->class = 'col-md-6';
+        $issueType->wrapper = 'col-md-6';
         $issueType->type = 'select';
         $issueType->data = TypeModel::all()->pluck('name', 'id');
 
         $summary = new Element('summary', 'Summary', 'text', 'col-md-12');
         $description = new Element('description', 'Description', 'textarea', 'col-md-12');
+        $description->addOption('id', 'editor1')->addOption('class', 'form-control ckeditor')->addOption('rows', 5);
 
         $priority = new Element('priority_id', 'Priority', 'select', 'col-md-6');
         $priority->data = PriorityModel::all()->pluck('name', 'id');

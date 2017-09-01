@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\IssueModel;
 use App\Models\ProjectModel;
+use App\Policies\IssuePolicy;
 use App\Policies\ProjectPolicy;
 use App\Policies\TimesheetPolicy;
 use App\Policies\UserPolicy;
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         ProjectModel::class => ProjectPolicy::class,
+        IssueModel::class => IssuePolicy::class,
         Timesheet::class => TimesheetPolicy::class,
     ];
 

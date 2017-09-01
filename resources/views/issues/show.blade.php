@@ -12,10 +12,10 @@
                 </ol>
             </section>
             <section class="col-md-8">
-                <div class="panel panel-default">
+                <div class="panel panel-default issue">
                     <div class="panel-heading">{{ $issue->summary }}</div>
                     <div class="panel-body">
-                        <p>{!! nl2br($issue->description) !!}</p>
+                        <p>{!! $issue->description !!}</p>
                     </div>
                     <div class="panel-footer text-right">
                         <a href="{{ route('issues.edit', $issue) }}" class="btn btn-primary">Update</a>
@@ -131,11 +131,11 @@
                         @can('close',$issue)
                             <span>
                                 <div class="btn-group">
-                                    <button style="width: 140px" type="button" class="btn btn-danger dropdown-toggle"
+                                    <button type="button" class="btn btn-danger dropdown-toggle"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Close <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="{{ route('issues.change-status',[$issue,5,1]) }}">Done</a></li>
                                         <li><a href="{{ route('issues.change-status',[$issue,5,2]) }}">Fixed</a></li>
                                         <li role="separator" class="divider"></li>
@@ -167,11 +167,11 @@
                     <div class="panel-footer text-right">
                         <span>
                             <div class="btn-group">
-                                <button style="width: 140px" type="button" class="btn btn-default dropdown-toggle"
+                                <button type="button" class="btn btn-default dropdown-toggle"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Derive <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-right">
                                     @foreach(\App\User::orderBy('name')->where('company_id',Auth::user()->company_id)->orderBy('lastName')->get() as $user)
                                         <li><a href="{{ route('issues.derive-to',[$issue,$user]) }}">{{ $user->fullName }}</a></li>
                                     @endforeach
@@ -209,3 +209,10 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(function () {
+            $('.panel.issue table').addClass('table');
+        });
+    </script>
+@endpush
