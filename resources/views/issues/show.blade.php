@@ -64,7 +64,7 @@
                                         <strong>{{ $comment->user->fullName }}</strong>
                                     </p>
                                     <p class="col-md-6 text-right">
-                                        <strong>{{ $comment->created_at->format('d/m/Y H:i') }}</strong>
+                                        <strong>{{ Auth::user()->tzDateTime($comment->created_at) }}</strong>
                                     </p>
                                 </div>
                                 <p>{!! nl2br($comment->message) !!}</p>

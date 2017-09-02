@@ -51,10 +51,9 @@
                                 <th>Priority</th>
                                 <th>Status</th>
                                 <th>Resolution</th>
-                                <th>Reported By</th>
                                 <th>Assigned To</th>
+                                <th>Reported By</th>
                                 <th>Created At</th>
-                                <th>Updated At</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,10 +66,9 @@
                                     <td>{{ $issue->priority->name }}</td>
                                     <td>{{ $issue->status->name }}</td>
                                     <td>{{ $issue->resolution->name ?? 'None' }}</td>
-                                    <td>{{ $issue->reported->fullName }}</td>
                                     <td>{{ $issue->assign->fullName }}</td>
-                                    <td>{{ $issue->created_at->format('d/m/y H:i') }}</td>
-                                    <td>{{ $issue->updated_at->format('d/m/y H:i') }}</td>
+                                    <td>{{ $issue->reported->fullName }}</td>
+                                    <td>{{ Auth::user()->tzDateTime($issue->created_at) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
