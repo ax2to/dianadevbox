@@ -49,30 +49,30 @@
                             <tr>
                                 <th></th>
                                 <th></th>
-                                @foreach($timesheet->days() as $date)
+                                @foreach($timesheet->getDays() as $date)
                                     <th class="text-center">{{ $date->day}}</th>
                                 @endforeach
                             </tr>
                             <tr>
                                 <th>Summary</th>
                                 <th class="text-center">Hours</th>
-                                @foreach($timesheet->days() as $date)
+                                @foreach($timesheet->getDays() as $date)
                                     <th class="text-center">{{ $date->format('D') }}</th>
                                 @endforeach
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($timesheet->getProjects() as $project)
-                                <tr>
-                                    <th colspan="{{ $timesheet->getDays() + 4 }}">{{ $project->name }}</th>
+                                <tr style="background-color: #f0efef">
+                                    <th colspan="{{ $timesheet->getDays()->count() + 4 }}">{{ $project->name }}</th>
                                 </tr>
                                 @foreach($timesheet->getIssuesByProject($project) as $issue)
                                     <tr>
                                         <td>{{ link_to_route('issues.show',$issue->summary,[$issue]) }}</td>
                                         <th class="text-center">{{ $timesheet->getHoursByIssue($issue) }}</th>
-                                        @for($i = 0; $i <= $timesheet->getDays(); $i++)
-                                            <td class="text-center">{{ $timesheet->getHoursByIssueInDate($issue,$timesheet->getDateByPosition($i)) }}</td>
-                                        @endfor
+                                        @foreach($timesheet->getDays() as $date)
+                                            <td class="text-center">{{ $timesheet->getHoursByIssueInDate($issue,$date) }}</td>
+                                        @endforeach
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -81,9 +81,9 @@
                             <tr>
                                 <th>Total</th>
                                 <th></th>
-                                @for($i = 0; $i <= $timesheet->getDays(); $i++)
-                                    <th class="text-center">{{ $timesheet->getHoursByDate($timesheet->getDateByPosition($i)) }}</th>
-                                @endfor
+                                @foreach($timesheet->getDays() as $date)
+                                    <th class="text-center">{{ $timesheet->getHoursByDate($date) }}</th>
+                                @endforeach
                             </tr>
                             </tfoot>
                         </table>

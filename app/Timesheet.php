@@ -19,11 +19,11 @@ class Timesheet
     /**
      * @var Carbon
      */
-    private $start;
+    private $startDate;
     /**
      * @var Carbon
      */
-    private $end;
+    private $endDate;
     /**
      * @var Collection
      */
@@ -37,9 +37,14 @@ class Timesheet
      */
     private $workLogs;
     /**
-     * @var null
+     * @var User
      */
     private $user = null;
+
+    /**
+     * @var Collection
+     */
+    private $days = null;
 
     /**
      * Timesheet constructor.
@@ -48,8 +53,8 @@ class Timesheet
      */
     public function __construct(Carbon $start, Carbon $end)
     {
-        $this->start = $start;
-        $this->end = $end;
+        $this->startDate = $start;
+        $this->endDate = $end;
     }
 
     /**
@@ -71,14 +76,6 @@ class Timesheet
     }
 
     /**
-     * @return integer
-     */
-    public function getDays()
-    {
-        return $this->end->diff($this->start)->days;
-    }
-
-    /**
      *
      */
     public function build()
@@ -91,6 +88,8 @@ class Timesheet
         $this->projects = ProjectModel::whereIn('id', $this->issues->pluck('project_id'))
             ->orderBy('name')
             ->get();
+
+        $this->calculateDays();
     }
 
     /**
@@ -99,7 +98,7 @@ class Timesheet
     private function getWorkLogsBaseQuery()
     {
         $query = WorkLogModel::where('company_id', Auth::user()->company_id)
-            ->whereBetween('date', [$this->start->tz('UTC'), $this->end->tz('UTC')])
+            ->whereBetween('date', [$this->startDate->tz('UTC'), $this->endDate->tz('UTC')])
             ->where('in_progress', false);
 
         if (!is_null($this->user)) {
@@ -107,6 +106,64 @@ class Timesheet
         }
 
         return $query;
+    }
+
+    /**
+     *
+     */
+    private function calculateDays()
+    {
+        $dates = [];
+        $date = clone $this->getStartDate();
+        while ($date < $this->getEndDate()) {
+            $dates[] = clone $date;
+            $date->addDay();
+        }
+        $this->days = collect($dates);
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getStartDate(): Carbon
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param Carbon $startDate
+     * @return Timesheet
+     */
+    public function setStartDate(Carbon $startDate): Timesheet
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getEndDate(): Carbon
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param Carbon $endDate
+     * @return Timesheet
+     */
+    public function setEndDate(Carbon $endDate): Timesheet
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getDays()
+    {
+        return $this->days;
     }
 
     /**
@@ -147,14 +204,15 @@ class Timesheet
 
     /**
      * @param IssueModel $issue
-     * @param string $date
+     * @param Carbon $date
      * @return float|int
      */
-    public function getHoursByIssueInDate(IssueModel $issue, $date)
+    public function getHoursByIssueInDate(IssueModel $issue, Carbon $date)
     {
         $workLogs = $this->workLogs->where('issue_id', $issue->id)->filter(function ($workLog) use ($date) {
-            return $workLog->date->format('Y-m-d') == $date;
+            return $workLog->date->format('Y-m-d') == $date->format('Y-m-d');
         });
+
         if ($workLogs->count() > 0) {
             $dateTime = (new \DateTime())->setTimestamp(0);
             foreach ($workLogs as $workLog) {
@@ -168,13 +226,13 @@ class Timesheet
     }
 
     /**
-     * @param string $date
+     * @param Carbon $date
      * @return float|int
      */
-    public function getHoursByDate($date)
+    public function getHoursByDate(Carbon $date)
     {
         $workLogs = $this->workLogs->filter(function ($workLog) use ($date) {
-            return $workLog->date->format('Y-m-d') == $date;
+            return $workLog->date->format('Y-m-d') == $date->format('Y-m-d');
         });
         if ($workLogs->count() > 0) {
             $dateTime = (new \DateTime())->setTimestamp(0);
@@ -186,61 +244,5 @@ class Timesheet
             return round($hours, 1);
         }
         return 0;
-    }
-
-    /**
-     * @param integer $position
-     * @return false|string
-     */
-    public function getDateByPosition($position)
-    {
-        return date('Y-m-' . ($this->getStart()->day + $position));
-    }
-
-    /**
-     * @return Carbon
-     */
-    public function getStart(): Carbon
-    {
-        return $this->start;
-    }
-
-    /**
-     * @param Carbon $start
-     * @return Timesheet
-     */
-    public function setStart(Carbon $start): Timesheet
-    {
-        $this->start = $start;
-        return $this;
-    }
-
-    public function days()
-    {
-        $dates = [];
-        $date = clone $this->getStart();
-        while ($date < $this->getEnd()) {
-            $dates[] = clone $date;
-            $date->addDay();
-        }
-        return $dates;
-    }
-
-    /**
-     * @return Carbon
-     */
-    public function getEnd(): Carbon
-    {
-        return $this->end;
-    }
-
-    /**
-     * @param Carbon $end
-     * @return Timesheet
-     */
-    public function setEnd(Carbon $end): Timesheet
-    {
-        $this->end = $end;
-        return $this;
     }
 }
