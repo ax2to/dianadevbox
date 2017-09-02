@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\RoleModel;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return User::ROLE_ADMIN == $this->role_id;
+    }
+
+    public function tzDateTime(Carbon $date)
+    {
+        return $date->tz($this->timezone)->format('Y-m-d H:i');
     }
 }

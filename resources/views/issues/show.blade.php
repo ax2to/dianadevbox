@@ -89,25 +89,37 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Details</div>
                     <div class="panel-body">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Project</label>
                             <p>{{ $issue->project->name }}</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Type</label>
                             <p>{{ $issue->type->name }}</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Priority</label>
                             <p>{{ $issue->priority->name }}</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Status</label>
                             <p>{{ $issue->status->name }}</p>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Resolution</label>
                             <p>{{ $issue->resolution->name ?? 'None' }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Resolution Date</label>
+                            <p>-</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Created at</label>
+                            <p>{{ Auth::user()->tzDateTime($issue->created_at) }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Updated at</label>
+                            <p>{{ Auth::user()->tzDateTime($issue->updated_at) }}</p>
                         </div>
                     </div>
                     <div class="panel-footer text-right">
@@ -156,12 +168,12 @@
                     <div class="panel-heading">People</div>
                     <div class="panel-body">
                         <div class="form-group col-md-6">
-                            <label>Reported By</label>
-                            <p>{{ $issue->reported->fullName }}</p>
-                        </div>
-                        <div class="form-group col-md-6">
                             <label>Assigned To</label>
                             <p>{{ $issue->assign->fullName }}</p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Reported By</label>
+                            <p>{{ $issue->reported->fullName }}</p>
                         </div>
                     </div>
                     <div class="panel-footer text-right">
