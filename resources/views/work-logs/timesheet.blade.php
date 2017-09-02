@@ -49,16 +49,16 @@
                             <tr>
                                 <th></th>
                                 <th></th>
-                                @for($i = 0; $i <= $timesheet->getDays(); $i++)
-                                    <th class="text-center">{{ $timesheet->getStart()->day + $i}}</th>
-                                @endfor
+                                @foreach($timesheet->days() as $date)
+                                    <th class="text-center">{{ $date->day}}</th>
+                                @endforeach
                             </tr>
                             <tr>
                                 <th>Summary</th>
                                 <th class="text-center">Hours</th>
-                                @for($i = 0; $i <= $timesheet->getDays(); $i++)
-                                    <th class="text-center">{{ date('D',mktime(0,0,0,date('m'),$timesheet->getStart()->day+$i)) }}</th>
-                                @endfor
+                                @foreach($timesheet->days() as $date)
+                                    <th class="text-center">{{ $date->format('D') }}</th>
+                                @endforeach
                             </tr>
                             </thead>
                             <tbody>

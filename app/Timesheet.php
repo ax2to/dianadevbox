@@ -79,24 +79,6 @@ class Timesheet
     }
 
     /**
-     * @return Carbon
-     */
-    public function getEnd(): Carbon
-    {
-        return $this->end;
-    }
-
-    /**
-     * @param Carbon $end
-     * @return Timesheet
-     */
-    public function setEnd(Carbon $end): Timesheet
-    {
-        $this->end = $end;
-        return $this;
-    }
-
-    /**
      *
      */
     public function build()
@@ -230,6 +212,35 @@ class Timesheet
     public function setStart(Carbon $start): Timesheet
     {
         $this->start = $start;
+        return $this;
+    }
+
+    public function days()
+    {
+        $dates = [];
+        $date = clone $this->getStart();
+        while ($date < $this->getEnd()) {
+            $dates[] = clone $date;
+            $date->addDay();
+        }
+        return $dates;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getEnd(): Carbon
+    {
+        return $this->end;
+    }
+
+    /**
+     * @param Carbon $end
+     * @return Timesheet
+     */
+    public function setEnd(Carbon $end): Timesheet
+    {
+        $this->end = $end;
         return $this;
     }
 }
