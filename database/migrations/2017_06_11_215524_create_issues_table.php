@@ -25,6 +25,7 @@ class CreateIssuesTable extends Migration
             $table->integer('assign_to');
             $table->integer('reported_by');
             $table->integer('resolution_id')->default(8); // unresolved
+            $table->string('estimated')->default('1H');
             $table->timestamps();
             $table->softDeletes();
         });

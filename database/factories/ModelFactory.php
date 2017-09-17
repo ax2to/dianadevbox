@@ -51,7 +51,7 @@ $factory->define(App\Models\IssueModel::class, function (Faker\Generator $faker)
 });
 
 $factory->define(App\Models\WorkLogModel::class, function (Faker\Generator $faker) {
-    $dates = collect(['P0Y0M0DT1H0M0S', 'P0Y0M0DT0H40M20S', 'P0Y0M0DT3H0M0S', 'P0Y0M0DT2H30M10S']);
+    $dates = collect(['1H', '40M', '1H 30M', '2H 15M']);
     $date = Carbon::now()->subDay(rand(1, 14));
     return [
         'company_id' => CompanyModel::all()->random()->id,

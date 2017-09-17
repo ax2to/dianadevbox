@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('projects/{project}/add-member/{user}', 'ProjectController@addMember')->name('projects.add-member');
     Route::resource('projects', 'ProjectController');
 
+    Route::resource('goals', 'GoalController');
+    Route::post('goals/{goal}/add', 'GoalController@add')->name('goals.add');
+
+
     Route::get('issues/{issue}/change-status/{status}/{resolution?}', 'IssueController@changeStatus')->name('issues.change-status');
     Route::get('issues/{issue}/derive-to/{user}', 'IssueController@deriveTo')->name('issues.derive-to');
     Route::resource('issues', 'IssueController');

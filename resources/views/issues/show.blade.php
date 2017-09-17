@@ -196,8 +196,21 @@
             </section>
             <section class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Work log</div>
+                    <div class="panel-heading">Work</div>
                     <div class="panel-body">
+                        <div class="form-group col-md-4">
+                            <label>Estimated Time</label>
+                            <p>{{ $issue->estimated }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Time Spent</label>
+                            <p>{{ $issue->spent }}</p>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Time Remaining</label>
+                            <p>{{ $issue->remaining }}</p>
+                        </div>
+                        <caption>Logs</caption>
                         <table class="table">
                             @foreach($issue->workLogs as $workLog)
                                 <tr>

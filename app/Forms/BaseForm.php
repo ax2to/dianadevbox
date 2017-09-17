@@ -77,6 +77,10 @@ class BaseForm
         return $this;
     }
 
+    /**
+     * @param $name
+     * @return Element
+     */
     public function getElement($name)
     {
         return $this->elements[$name];

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\DateInterval;
+use App\DateTime;
 use App\Models\Issue\AttachmentModel;
 use App\Models\Issue\CommentModel;
 use App\Models\Issue\PriorityModel;
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
  * @property int status_id
  * @property int assign_to
  * @property int resolution_id
+ * @property string summary
  */
 class IssueModel extends Model
 {
@@ -25,7 +28,7 @@ class IssueModel extends Model
     protected $fillable = [
         'project_id', 'type_id', 'priority_id',
         'summary', 'description',
-        'assign_to'
+        'assign_to', 'estimated'
     ];
 
     public function project()
@@ -104,6 +107,28 @@ class IssueModel extends Model
         return $this->hasMany(WorkLogModel::class, 'issue_id');
     }
 
+    public function scopeAllowedProjects($query)
+    {
+        $projects = ProjectModel::AllowedForUser(Auth::user())->pluck('id');
+        return $query->whereIn('project_id', $projects);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->id . ' - ' . $this->summary;
+    }
+
+    public function getSpentAttribute()
+    {
+        $i = new DateInterval(0);
+
+        foreach ($this->workLogs as $workLog) {
+            $interval = new \DateInterval($workLog->worked_interval);
+            $i->add($interval);
+        }
+        return $i;
+    }
+
     public function workLogInHours()
     {
         $workLogs = $this->workLogs;
@@ -116,9 +141,24 @@ class IssueModel extends Model
         return round($hours, 1);
     }
 
-    public function scopeAllowedProjects($query)
+    public function getRemainingAttribute()
     {
-        $projects = ProjectModel::AllowedForUser(Auth::user())->pluck('id');
-        return $query->whereIn('project_id', $projects);
+        $estimated = (new DateTime())->add($this->estimated);
+        $spent = (new DateTime())->add($this->spent);
+
+        if ($spent > $estimated) {
+            return new DateInterval(0);
+        }
+
+        $diff = $estimated->diff($spent);
+
+        $rs = new DateInterval($diff->y, $diff->m, 0, $diff->d, $diff->h, $diff->i, $diff->s);
+
+        return $rs;
+    }
+
+    public function getEstimatedAttribute()
+    {
+        return DateInterval::createFromString($this->attributes['estimated']);
     }
 }
