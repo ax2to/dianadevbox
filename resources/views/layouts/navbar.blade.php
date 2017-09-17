@@ -29,6 +29,7 @@
                         <li><a href="{{ route('projects.create') }}">Create Project</a></li>
                     </ul>
                 </li>
+                @admin
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Goals <span class="caret"></span></a>
@@ -38,6 +39,7 @@
                         <li><a href="{{ route('goals.create') }}">Create Goal</a></li>
                     </ul>
                 </li>
+                @endadmin
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Issues <span class="caret"></span></a>

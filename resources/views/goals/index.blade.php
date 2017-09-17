@@ -22,16 +22,20 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Project</th>
                                 <th>Goal</th>
                                 <th>Completed</th>
+                                <th>Due Date</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($goals as $goal)
                                 <tr>
                                     <td>{{ $goal->id }}</td>
+                                    <td>{{ link_to_route('projects.show',$goal->project->name,[$goal->project]) }}</td>
                                     <td>{{ link_to_route('goals.show',$goal->name,[$goal]) }}</td>
-                                    <td>{{ $goal->id }}</td>
+                                    <td>{{ $goal->progressCompleted() }}%</td>
+                                    <td>{{ $goal->end_at->format('Y-m-d') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
