@@ -56,7 +56,7 @@ class GoalModel extends Model
         return round($hours, 1);
     }
 
-    public function ProgressCompleted()
+    public function progressCompleted()
     {
         // get issues completed
         $issues = $this->issues()->where('resolution_id', [1, 2])->get();
@@ -66,6 +66,10 @@ class GoalModel extends Model
             $i->add($issue->estimated);
         }
         // calculate progress
+        // if total estimated is 0 return 0
+        if ($this->overallTimeEstimated() == 0) {
+            return 0;
+        }
         // 100 * TimeSpent / TimeEstimated
         return round(100 * $i->toSeconds() / ($this->overallTimeEstimated() * 60 * 60));
     }
