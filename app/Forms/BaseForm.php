@@ -40,15 +40,26 @@ class BaseForm
 
     public function open()
     {
+        $params = ['url' => $this->action, 'method' => $this->method];
         if ($this->isModel) {
-            return FormFacade::model($this->model, ['url' => $this->action, 'method' => $this->method]);
+            return FormFacade::model($this->model, $params);
         }
-        return FormFacade::open(['url' => $this->action, 'method' => $this->method]);
+        return FormFacade::open($params);
     }
 
     public function body()
     {
+        if ($this->isModel) {
+            $this->cleanDefaultValues();
+        }
         return view('forms.form')->with('form', $this);
+    }
+
+    private function cleanDefaultValues()
+    {
+        foreach ($this->elements as $element) {
+            $element->setDefault(null);
+        }
     }
 
     public function close()
