@@ -12,10 +12,10 @@ class IssuePrioritiesTableSeeder extends Seeder
      */
     public function run()
     {
-        PriorityModel::create(['name' => 'Trivial']);
-        PriorityModel::create(['name' => 'Minor']);
-        PriorityModel::create(['name' => 'Medium']);
-        PriorityModel::create(['name' => 'Major']);
-        PriorityModel::create(['name' => 'Critical']);
+        PriorityModel::create(['name' => 'Trivial', 'order' => 1]);
+        PriorityModel::create(['name' => 'Minor', 'order' => 2]);
+        PriorityModel::create(['name' => 'Medium', 'order' => 3]);
+        PriorityModel::create(['name' => 'Major', 'order' => 4]);
+        PriorityModel::create(['name' => 'Critical', 'order' => 5]);
     }
 }

@@ -16,6 +16,7 @@ class CreateIssuePrioritiesTable extends Migration
         Schema::create('issue_priorities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->tinyInteger('order')->default(3);
             $table->timestamps();
         });
     }
