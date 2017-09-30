@@ -45,8 +45,8 @@
                        aria-expanded="false">Issues <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('issues.index') }}">All Issues</a></li>
-                        <li><a href="{{ route('issues.index',['assign_to'=>Auth::id()]) }}">Assigned to me</a></li>
-                        <li><a href="#">Reported by me</a></li>
+                        <li><a href="{{ route('issues.index',['assign_to'=>auth()->id()]) }}">Assigned to me</a></li>
+                        <li><a href="{{ route('issues.index',['reported_by'=>auth()->id()]) }}">Reported by me</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ route('issues.create') }}">Create Issue</a></li>
                     </ul>

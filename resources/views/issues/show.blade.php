@@ -237,7 +237,7 @@
 @push('scripts')
     <script>
         $(function () {
-            $('.panel.issue table').addClass('table');
+            $('.panel.issue table').addClass('table').addClass('table-condensed').removeAttr('style').removeAttr('cellspacing');
         });
     </script>
 @endpush

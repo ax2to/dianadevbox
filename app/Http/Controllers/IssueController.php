@@ -21,17 +21,22 @@ class IssueController extends Controller
     {
         $issues = IssueModel::where('company_id', Auth::user()->company_id)->allowedProjects();
         $issues = $this->applyFilter($issues, 'project_id');
+        $issues = $this->applyFilter($issues, 'priority_id');
         $issues = $this->applyFilter($issues, 'status_id');
         $issues = $this->applyFilter($issues, 'resolution_id', 8);
         $issues = $this->applyFilter($issues, 'assign_to');
+        $issues = $this->applyFilter($issues, 'reported_by');
 
+        $search = request('search', null);
         if (request()->has('search')) {
             $issues->where('summary', 'Like', '%' . request('search') . '%');
         }
 
-        $issues = $issues->orderBy('id', 'desc')->paginate();
-
-        return view('issues.index', compact('issues'));
+        $issues = $issues->leftJoin('issue_priorities', 'priority_id', '=', 'issue_priorities.id')
+            ->select('issues.*')
+            ->orderBy('issue_priorities.order', 'desc')
+            ->paginate();
+        return view('issues.index', compact('issues', 'search'));
     }
 
     public function applyFilter($model, $filter, $default = 'all')

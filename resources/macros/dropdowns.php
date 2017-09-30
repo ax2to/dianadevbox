@@ -2,6 +2,7 @@
 Form::macro('projects', function ($key, $default, $options) {
     $values = \App\Models\ProjectModel::where('company_id', Auth::user()->company_id)
         ->allowedForUser(Auth::user())
+        ->orderBy('name')
         ->pluck('name', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();
@@ -43,11 +44,12 @@ Form::macro('issueResolutions', function ($key, $default, $options) {
 });
 
 Form::macro('priorities', function ($key, $default = null, $options = []) {
+    $default = $default ?? \App\Models\Issue\PriorityModel::DEFAULT;
     $values = \App\Models\Issue\PriorityModel::all()->pluck('name', 'id');
     if (isset($options['all']) && $options['all'] == true) {
         $values = ['all' => 'All'] + $values->toArray();
     }
-    $default = $default ?? \App\Models\Issue\PriorityModel::DEFAULT;
+
     return Form::select($key, $values, $default, $options);
 });
 

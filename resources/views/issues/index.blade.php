@@ -11,37 +11,45 @@
             </div>
         </section>
         @include('flash::message')
-        <section class="panel panel-default">
-            <div class="panel-heading">
-                Issues
-                <form class="pull-right">
-                    <div class="input-group">
-                        <input name="search" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <section id="issues" class="panel panel-default">
+            <div class="panel-heading">Issues</div>
             <div class="panel-body">
                 <section class="row">
-                    <div class="col-md-12">
-                        <form>
+                    <form id="filters" method="get">
+                        <div class="form-group col-md-2">
                             <label>Project</label>
-                            {{ Form::projects('project_id', request('project_id'), ['all' => true, 'class' => 'select2']) }}
+                            {{ Form::projects('project_id', request('project_id'), ['all' => true, 'class' => 'form-control ']) }}
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Priority</label>
+                            {{ Form::priorities('priority_id', request('priority_id', 'all'), ['all' => true, 'class' => 'form-control ']) }}
+                        </div>
+                        <div class="form-group col-md-2">
                             <label>Status</label>
-                            {{ Form::issueStatus('status_id', request('status_id'), ['all' => true, 'class' => 'select2']) }}
+                            {{ Form::issueStatus('status_id', request('status_id'), ['all' => true, 'class' => 'form-control ']) }}
+                        </div>
+                        <div class="form-group col-md-2">
                             <label>Resolution</label>
-                            {{ Form::issueResolutions('resolution_id', request('resolution_id', 8), ['all' => true, 'class' => 'select2']) }}
+                            {{ Form::issueResolutions('resolution_id', request('resolution_id', 8), ['all' => true, 'class' => 'form-control ']) }}
+                        </div>
+                        <div class="form-group col-md-2">
                             <label>Assigned To</label>
-                            {{ Form::users('assign_to', request('assign_to'), ['all' => true, 'class' => 'select2']) }}
-                            <button class="btn btn-primary">Apply</button>
-                        </form>
-                    </div>
+                            {{ Form::users('assign_to', request('assign_to'), ['all' => true, 'class' => 'form-control ']) }}
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Search</label>
+                            <div class="input-group">
+                                <input name="search" class="form-control" placeholder="Search" value="{{ $search }}">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </section>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-responsive table-bordered table-striped" style="margin-top: 20px">
+                        <table class="table table-responsive table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -58,7 +66,7 @@
                             </thead>
                             <tbody>
                             @foreach($issues as $issue)
-                                <tr>
+                                <tr class="@if($issue->priority_id == 5) danger @endif">
                                     <td>{{ $issue->id }}</td>
                                     <td>{{ $issue->project->name }}</td>
                                     <td><a href="{{ route('issues.show',$issue) }}">{{ $issue->summary }}</a></td>
@@ -82,3 +90,8 @@
         </section>
     </div>
 @endsection
+@push('scripts')
+    <script>
+
+    </script>
+@endpush
