@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($goal->issues as $issue)
+                            @foreach($goal->issues()->orderBy('summary')->get() as $issue)
                                 <tr>
                                     <td>{{ link_to_route('issues.show',$issue->summary,[$issue]) }}</td>
                                     <td>{{ $issue->status->name }}</td>

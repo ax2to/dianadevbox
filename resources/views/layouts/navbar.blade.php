@@ -104,3 +104,6 @@
         </div>
     </div>
 </nav>
+@if(auth()->check())
+    <quick-issues></quick-issues>
+@endif
