@@ -12,6 +12,7 @@ use App\Models\Issue\StatusModel;
 use App\Models\Issue\TypeModel;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class IssueModel extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'issues';
     protected $fillable = [
         'project_id', 'type_id', 'priority_id',
