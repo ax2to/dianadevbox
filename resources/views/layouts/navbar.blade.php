@@ -65,6 +65,14 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+                <!-- Trigger the modal with a button -->
+                @if(Auth::check())
+                    <li>
+                        <a data-toggle="modal" data-target="#addIssue" id="fastIssue">
+                            Issue Now!
+                        </a>
+                    </li>
+                @endif
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Users <span class="caret"></span></a>
