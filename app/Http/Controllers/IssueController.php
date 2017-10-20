@@ -9,6 +9,7 @@ use App\Models\IssueModel;
 use App\Models\WorkLogModel;
 use App\User;
 use Auth;
+use Symfony\Component\HttpFoundation\Request;
 
 class IssueController extends Controller
 {
@@ -155,5 +156,23 @@ class IssueController extends Controller
         $issue->save();
 
         return redirect()->route('issues.show', $issue);
+    }
+
+    public function addIssue(Request $request)
+    {
+        $issue = new IssueModel();
+        $issue->description = "Task Fast Creating...";
+        $issue->summary = $request->input('summary');
+        $issue->project_id = $request->input('project_id');
+        $issue->type_id = 1; // Task
+        $issue->priority_id = 3; // Medium
+        $issue->resolution_id = 8; // Unresolved
+        $issue->estimated = "1H";
+        $issue->assign_to = Auth::id();
+        $issue->company_id = Auth::user()->company_id;
+        $issue->reported_by = Auth::id();
+        $issue->save();
+        
+        return $this->changeStatus($issue, 3);
     }
 }

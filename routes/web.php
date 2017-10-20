@@ -54,3 +54,4 @@ Route::get('testing', function () {
         dump($log->created_at);
     }
 });
+Route::post('newIssue', 'IssueController@addIssue');

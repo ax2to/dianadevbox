@@ -17,6 +17,39 @@
 </head>
 <body>
 <div id="app">
+    <!-- Modal -->
+    <div id="addIssue" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        @if(Auth::check())
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create new Issue</h4>
+              </div>
+              {{ Form::open(['url' => 'newIssue', 'method' => 'post']) }}
+                <div class="modal-body">
+                    <div class="form-group">
+                            {{ Form::label('project_id','Project') }}
+                            <select name="project_id" id="project_id">
+                                @foreach(App\Models\ProjectModel::where('company_id', Auth::user()->company_id)->get() as $project)
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    {{ Form::label('summary','Summary') }}
+                    {{ Form::text('summary',null,['class'=>'form-control']) }}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              {{ Form::close() }}
+            </div>
+        @endif
+      </div>
+    </div>
+
     @include('layouts.navbar')
 
     @yield('content')
@@ -28,6 +61,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="//cdn.ckeditor.com/4.7.2/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     $(function () {
         // lightbox
