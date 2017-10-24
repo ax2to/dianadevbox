@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
@@ -31,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('issues/{issue}/derive-to/{user}', 'IssueController@deriveTo')->name('issues.derive-to');
     Route::resource('issues', 'IssueController');
 
+    Route::resource('tickets', 'TicketController');
+
     Route::get('work-logs/timesheet', 'WorkLogController@timesheet')->name('work-logs.timesheet');
     Route::resource('work-logs', 'WorkLogController');
 
@@ -45,12 +49,49 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('testing', function () {
-    $now = \Carbon\Carbon::now();
-    $now->tz = new DateTimeZone('America/Lima');
-    $now->day = 15;
-    dump($now);
-    $logs = \App\Models\WorkLogModel::whereDate('created_at', $now)->get();
-    foreach ($logs as $log) {
-        dump($log->created_at);
+    $rows = DB::table('data.data_tmp')->skip(11653)->take(2500)->get();
+    foreach ($rows as $row) {
+        // contact
+        $contact = new \App\Models\ContactModel();
+        $contact->company = $row->col7;
+        $contact->name = $row->col1;
+        $contact->lastname = $row->col2;
+        $contact->country = $row->col3;
+        $contact->email1 = $row->col4;
+        $contact->phone1 = $row->col9;
+        $contact->phone2 = $row->col10;
+        $contact->address = $row->col18;
+        $contact->city = $row->col22;
+        $contact->save();
+
+
+        // issue
+        $data1 = '';
+        if ($row->col7 != '') {
+            $data1 .= $row->col7;
+        } else {
+            $data1 = 'lead';
+        }
+
+        $data2 = '';
+        foreach ($row as $string) {
+            if (!is_null($string) && $string != '') {
+                $data2 .= $string . '<br>';
+            }
+        }
+
+        $issue = new \App\Models\IssueModel();
+        $issue->company_id = 1;
+        $issue->project_id = 4;
+        $issue->type_id = 5;
+        $issue->summary = $data1;
+        $issue->description = $data2;
+        $issue->priority_id = 3;
+        $issue->status_id = 6;
+        $issue->assign_to = 1;
+        $issue->reported_by = 1;
+        $issue->resolution_id = 8;
+        $issue->contact_id = $contact->id;
+        $issue->save();
     }
 });

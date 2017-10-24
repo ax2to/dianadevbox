@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // settings
         $this->call(RoleTableSeeder::class);
+        $this->call(WorkflowsTableSeeder::class);
         $this->call(IssueTypeTableSeeder::class);
         $this->call(IssueResolutionTableSeeder::class);
         $this->call(IssuePrioritiesTableSeeder::class);
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // data
         $this->call(CompaniesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(ContactTableSeeder::class);
         $this->call(ProjectsTableSeeder::class);
         $this->call(IssuesTableSeeder::class);
         $this->call(WorkLogsTableSeeder::class);

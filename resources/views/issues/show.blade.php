@@ -77,8 +77,17 @@
                         <div class="row text-right">
                             <div class="col-md-12">
                                 {{ Form::open(['route'=>['issues.comments.store',$issue]]) }}
-                                <textarea name="message" class="form-control"></textarea>
-                                <button class="btn btn-primary">Save</button>
+                                <div id="to" class="form-group" style="display: none">
+                                    <input type="email" name="to" class="form-control" placeholder="To:">
+                                </div>
+                                <div class="form-group">
+                                    <textarea required name="message" class="form-control"
+                                              placeholder="Message..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input id="chkEmail" type="checkbox" name="email"> Send email
+                                    <button class="btn btn-primary">Save</button>
+                                </div>
                                 {{ Form::close() }}
                             </div>
                         </div>
@@ -237,7 +246,20 @@
 @push('scripts')
     <script>
         $(function () {
+            // tables
             $('.panel.issue table').addClass('table').addClass('table-condensed').removeAttr('style').removeAttr('cellspacing');
+
+            // comment
+            $('#chkEmail').change(function () {
+                var status = $(this).prop('checked');
+                if (status) {
+                    $('#to').css('display', '');
+                    $('#to input').prop('require', true);
+                } else {
+                    $('#to').css('display', 'none');
+                    $('#to input').prop('require', false);
+                }
+            });
         });
     </script>
 @endpush

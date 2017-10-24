@@ -32,7 +32,6 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -69,5 +68,12 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'company_id' => '0'
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        $user->generateToken();
+
+        return response()->json(['data' => $user->toArray()], 201);
     }
 }

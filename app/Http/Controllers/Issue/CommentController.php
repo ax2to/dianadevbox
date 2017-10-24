@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Issue;
 
+use App\Http\Controllers\Controller;
+use App\Mail\CommentMail;
 use App\Models\Issue\CommentModel;
 use App\Models\IssueModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -38,10 +40,16 @@ class CommentController extends Controller
      */
     public function store(Request $request, IssueModel $issue)
     {
+        //$this->validate($request, ['to' => 'required', 'comment' => 'required']);
+
         $comment = new CommentModel();
         $comment->user_id = \Auth::id();
         $comment->message = $request->message;
         $issue->comments()->save($comment);
+
+        if ($request->has('email')) {
+            Mail::to($request->get('to'))->send(new CommentMail($comment));
+        }
 
         return redirect()->route('issues.show', $issue);
     }

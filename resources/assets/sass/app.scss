@@ -4,3 +4,13 @@
 @import "variables";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+.datagrid {
+  margin-top: 20px;
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #5e5d5d;
+    margin-bottom: 20px;
+  }
+}

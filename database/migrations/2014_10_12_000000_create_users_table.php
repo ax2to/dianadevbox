@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('timezone')->default('America/Lima');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('api_token', 60)->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

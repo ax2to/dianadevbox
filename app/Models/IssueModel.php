@@ -164,4 +164,9 @@ class IssueModel extends Model
     {
         return DateInterval::createFromString($this->attributes['estimated']);
     }
+
+    public function contact()
+    {
+        return $this->belongsTo(ContactModel::class);
+    }
 }

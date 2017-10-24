@@ -16,5 +16,6 @@ class IssueTypeTableSeeder extends Seeder
         TypeModel::create(['name' => 'Bug']);
         TypeModel::create(['name' => 'Improvement']);
         TypeModel::create(['name' => 'New Feature']);
+        TypeModel::create(['name' => 'Ticket']);
     }
 }

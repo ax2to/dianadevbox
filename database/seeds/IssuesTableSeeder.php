@@ -12,5 +12,6 @@ class IssuesTableSeeder extends Seeder
     public function run()
     {
         factory(\App\Models\IssueModel::class, 60)->create();
+        factory(\App\Models\IssueModel::class, 60)->create(['type_id' => 5]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIssueStatusTable extends Migration
+class CreateWorkflowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateIssueStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('issue_status', function (Blueprint $table) {
+        Schema::create('workflows', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('workflow_id')->default(1);
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateIssueStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('issue_status');
+        Schema::dropIfExists('workflows');
     }
 }
