@@ -13,12 +13,14 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('quick-issues', require('./components/QuickIssues.vue'));
-
 Vue.component('panel', require('./components/Panel.vue'));
-Vue.component('datagrid', require('./components/Datagrid.vue'));
+Vue.component('pipeline', require('./components/tickets/Pipeline.vue'));
+Vue.component('create', require('./components/tickets/Create.vue'));
+Vue.component('datagrid', require('./components/tickets/Datagrid.vue'));
+Vue.component('datagrid-row', require('./components/tickets/DatagridRow.vue'));
+Vue.component('contact', require('./components/tickets/Contact.vue'));
+Vue.component('ticket', require('./components/tickets/Ticket.vue'));
+Vue.component('comments', require('./components/tickets/Comments.vue'));
 
 const app = new Vue({
     el: '#app'

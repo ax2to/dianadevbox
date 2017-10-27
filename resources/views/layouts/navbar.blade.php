@@ -61,6 +61,9 @@
                         <li><a href="{{ route('work-logs.create') }}">Create Work Log</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="/tickets/">Tickets</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

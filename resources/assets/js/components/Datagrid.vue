@@ -8,7 +8,15 @@
                     {{ item.name }}
                 </a>
             </li>
+            <li>
+                <a v-on:click.prevent="newTicket()" href="">Create<br>Ticket</a>
+            </li>
         </ul>
+
+        <template v-if="isNewTicket">
+            <ticket-create></ticket-create>
+        </template>
+
         <table class="table table-responsive table-bordered datagrid">
             <thead>
             <tr>
@@ -132,7 +140,8 @@
                 phone2: '',
                 comments: [],
                 comment: '',
-                sendEmail: false
+                sendEmail: false,
+                isNewTicket: false,
             }
         },
         props: ['user_id'],
@@ -215,6 +224,9 @@
                     self.sendEmail = false;
                     self.getComments(ticket);
                 })
+            },
+            newTicket() {
+                this.isNewTicket = true;
             }
         }
     }

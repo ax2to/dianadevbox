@@ -6,6 +6,6 @@ class TicketController extends Controller
 {
     public function index()
     {
-        return view('tickets.index');
+        return view('tickets.index2');
     }
 }

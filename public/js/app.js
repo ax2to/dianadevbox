@@ -870,7 +870,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(61);
 
 
 /***/ }),
@@ -892,12 +892,14 @@ window.Vue = __webpack_require__(36);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('example', __webpack_require__(37));
-Vue.component('quick-issues', __webpack_require__(40));
-
-Vue.component('panel', __webpack_require__(43));
+Vue.component('panel', __webpack_require__(37));
+Vue.component('pipeline', __webpack_require__(40));
+Vue.component('create', __webpack_require__(43));
 Vue.component('datagrid', __webpack_require__(46));
+Vue.component('datagrid-row', __webpack_require__(49));
+Vue.component('contact', __webpack_require__(52));
+Vue.component('ticket', __webpack_require__(55));
+Vue.component('comments', __webpack_require__(58));
 
 var app = new Vue({
   el: '#app'
@@ -42011,9 +42013,9 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/Example.vue"
+Component.options.__file = "resources/assets/js/components/Panel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Panel.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -42022,9 +42024,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63f05b66", Component.options)
+    hotAPI.createRecord("data-v-b1c976b2", Component.options)
   } else {
-    hotAPI.reload("data-v-63f05b66", Component.options)
+    hotAPI.reload("data-v-b1c976b2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -42052,278 +42054,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-63f05b66", module.exports)
-  }
-}
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(41)
-/* template */
-var __vue_template__ = __webpack_require__(42)
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/QuickIssues.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] QuickIssues.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3b78abea", Component.options)
-  } else {
-    hotAPI.reload("data-v-3b78abea", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component Quick Issues.');
-    }
-});
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [_vm._v("Issues")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("label", [_vm._v("Issues In Progress")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "btn-group",
-                  attrs: { role: "group", "aria-label": "..." }
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Left")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Middle")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Right")]
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3b78abea", module.exports)
-  }
-}
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(44)
-/* template */
-var __vue_template__ = __webpack_require__(45)
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Panel.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Panel.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b1c976b2", Component.options)
-  } else {
-    hotAPI.reload("data-v-b1c976b2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -42334,7 +42064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 45 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42371,6 +42101,589 @@ if (false) {
 }
 
 /***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(41)
+/* template */
+var __vue_template__ = __webpack_require__(42)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/Pipeline.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Pipeline.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9f4c1112", Component.options)
+  } else {
+    hotAPI.reload("data-v-9f4c1112", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user_id'],
+    mounted: function mounted() {
+        this.get();
+    },
+    data: function data() {
+        return {
+            isLoading: true,
+            current: 6,
+            items: []
+        };
+    },
+    created: function created() {
+        var self = this;
+        this.$root.$on('storeTicket', function () {
+            self.get();
+        });
+        this.$root.$on('changeStatus', function () {
+            self.get();
+        });
+    },
+
+    methods: {
+        get: function get() {
+            var self = this;
+            var url = '/api/pipeline?user_id=' + this.user_id;
+            axios.get(url).then(function (response) {
+                self.items = response.data;
+                self.isLoading = false;
+            });
+        },
+        changePipeline: function changePipeline(id) {
+            this.current = id;
+            this.$root.$emit('changePipeline', this.current);
+        },
+        newTicket: function newTicket() {
+            this.$root.$emit('newTicket');
+        }
+    }
+});
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "nav nav-pills nav-justified", attrs: { id: "status" } },
+    [
+      _vm.isLoading
+        ? _c("li", [_vm._v("loading...")])
+        : _vm._l(_vm.items, function(item) {
+            return _c("li", { class: { active: _vm.current == item.id } }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changePipeline(item.id)
+                    }
+                  }
+                },
+                [
+                  _c("span", { staticStyle: { "font-size": "20px" } }, [
+                    _vm._v(_vm._s(item.count))
+                  ]),
+                  _c("br"),
+                  _vm._v("\n            " + _vm._s(item.name) + "\n        ")
+                ]
+              )
+            ])
+          }),
+      _vm._v(" "),
+      _c("li", [
+        _c(
+          "a",
+          {
+            attrs: { href: "" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.newTicket()
+              }
+            }
+          },
+          [_vm._v("Create"), _c("br"), _vm._v("Ticket")]
+        )
+      ])
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-9f4c1112", module.exports)
+  }
+}
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(44)
+/* template */
+var __vue_template__ = __webpack_require__(45)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/Create.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Create.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d75dc11", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d75dc11", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user_id'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            display: false,
+            company: '',
+            name: '',
+            lastName: '',
+            email1: '',
+            email2: '',
+            phone1: '',
+            phone2: '',
+            source: '',
+            pipeline: 6
+        };
+    },
+
+    methods: {
+        cancel: function cancel() {
+            this.display = false;
+        },
+        store: function store() {
+            var self = this;
+            var url = '/api/ticket/create';
+            var data = {
+                user_id: this.user_id,
+                pipeline: this.pipeline,
+                company: this.company,
+                name: this.name,
+                lastname: this.lastName,
+                email1: this.email1,
+                email2: this.email2,
+                phone1: this.phone1,
+                phone2: this.phone2,
+                source: this.source
+            };
+            axios.post(url, data).then(function (response) {
+                self.$root.$emit('storeTicket');
+                self.display = false;
+                self.company = self.name = self.lastName = self.email1 = self.email2 = self.phone1 = self.phone2 = self.source = '';
+            });
+        }
+    },
+    created: function created() {
+        var self = this;
+        this.$root.$on('newTicket', function () {
+            self.display = true;
+        });
+        this.$root.$on('changePipeline', function (id) {
+            self.pipeline = id;
+        });
+    }
+});
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.display
+    ? _c("div", { staticClass: "row", staticStyle: { "margin-top": "20px" } }, [
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("label", [_vm._v("Company")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.company,
+                expression: "company"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.company },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.company = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Last Name")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.lastName,
+                expression: "lastName"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.lastName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.lastName = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Email 1")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email1,
+                expression: "email1"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.email1 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email1 = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Email 2")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email2,
+                expression: "email2"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.email2 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email2 = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Phone 1")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phone1,
+                expression: "phone1"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.phone1 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.phone1 = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", [_vm._v("Phone 2")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phone2,
+                expression: "phone2"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.phone2 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.phone2 = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("label", [_vm._v("Source")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.source,
+                expression: "source"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.source },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.source = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-default",
+              on: {
+                click: function($event) {
+                  _vm.cancel()
+                }
+              }
+            },
+            [_vm._v("Cancel")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  _vm.store()
+                }
+              }
+            },
+            [_vm._v("Save")]
+          )
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d75dc11", module.exports)
+  }
+}
+
+/***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42393,7 +42706,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/Datagrid.vue"
+Component.options.__file = "resources/assets/js/components/tickets/Datagrid.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Datagrid.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42404,9 +42717,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5919669d", Component.options)
+    hotAPI.createRecord("data-v-0ddee876", Component.options)
   } else {
-    hotAPI.reload("data-v-5919669d", Component.options)
+    hotAPI.reload("data-v-0ddee876", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -42448,6 +42761,185 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user_id'],
+    mounted: function mounted() {
+        this.get(6);
+    },
+    data: function data() {
+        return {
+            isLoading: true,
+            pipeline: 6,
+            items: []
+        };
+    },
+
+    methods: {
+        get: function get(status) {
+            var self = this;
+            var url = '/api/tickets?user_id=' + this.user_id + '&status=' + status;
+            axios.get(url).then(function (response) {
+                self.items = response.data;
+                self.isLoading = false;
+                self.$root.$emit('getTickets');
+            });
+        },
+        showTicket: function showTicket(id) {
+            this.$root.$emit('showTicket', id);
+        }
+    },
+    created: function created() {
+        var self = this;
+        this.$root.$on('storeTicket', function () {
+            self.get(self.pipeline);
+        });
+        this.$root.$on('changePipeline', function (id) {
+            self.pipeline = id;
+            self.get(self.pipeline);
+        });
+        this.$root.$on('changeStatus', function () {
+            self.get(self.pipeline);
+        });
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.isLoading
+      ? _c("div", [_vm._v("loading...")])
+      : _c(
+          "table",
+          { staticClass: "table table-responsive table-bordered datagrid" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.items, function(item) {
+                return _c("tr", [
+                  _c("td", [_vm._v(_vm._s(item.id))]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "div",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.showTicket(item.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(item.summary) +
+                              "\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("datagrid-row", {
+                        attrs: {
+                          id: item.id,
+                          contact_id: item.contact_id,
+                          user_id: _vm.user_id
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              })
+            )
+          ]
+        )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { width: "60px" } }, [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Summary")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0ddee876", module.exports)
+  }
+}
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(50)
+/* template */
+var __vue_template__ = __webpack_require__(51)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/DatagridRow.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] DatagridRow.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-50ec8305", Component.options)
+  } else {
+    hotAPI.reload("data-v-50ec8305", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -42460,43 +42952,105 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'contact_id', 'user_id'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-6" },
+      [_c("contact", { attrs: { id: _vm.contact_id, ticket_id: _vm.id } })],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-md-6" },
+      [
+        _c("ticket", { attrs: { id: _vm.id } }),
+        _vm._v(" "),
+        _c("comments", { attrs: { id: _vm.id, user_id: _vm.user_id } })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-50ec8305", module.exports)
+  }
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(53)
+/* template */
+var __vue_template__ = __webpack_require__(54)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/Contact.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Contact.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d87da04a", Component.options)
+  } else {
+    hotAPI.reload("data-v-d87da04a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -42539,14 +43093,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'ticket_id'],
+    mounted: function mounted() {},
     data: function data() {
         return {
-            isLoading: true,
-            items: [],
-            current: 6,
-            records: [],
-            row: 0,
-            isContactSaved: false,
+            display: false,
             company: '',
             name: '',
             lastName: '',
@@ -42554,671 +43105,520 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             email2: '',
             phone1: '',
             phone2: '',
-            comments: [],
-            comment: '',
-            sendEmail: false
+            source: ''
         };
     },
-
-    props: ['user_id'],
-    mounted: function mounted() {
-        this.getPipeline();
-        this.getTickets(this.current);
+    created: function created() {
+        var self = this;
+        this.$root.$on('showTicket', function (id) {
+            if (self.ticket_id === id) {
+                self.get();
+                self.display = true;
+            }
+        });
+        this.$root.$on('getTickets', function () {
+            self.display = false;
+        });
     },
 
     methods: {
-        getDetails: function getDetails(record) {
-            this.row = record.id;
-            this.company = record.contact.company;
-            this.name = record.contact.name;
-            this.lastName = record.contact.lastname;
-            this.email1 = record.contact.email1;
-            this.email2 = record.contact.email2;
-            this.phone1 = record.contact.phone1;
-            this.phone2 = record.contact.phone2;
-
-            this.getComments(record.id);
-        },
-        getPipeline: function getPipeline() {
-            self = this;
-            axios.get('/api/status').then(function (response) {
-                self.items = response.data;
+        get: function get() {
+            var self = this;
+            var url = '/api/contact/' + this.id;
+            axios.get(url).then(function (response) {
+                self.company = response.data.company;
+                self.name = response.data.name;
+                self.lastName = response.data.lastname;
+                self.email1 = response.data.email1;
+                self.email2 = response.data.email2;
+                self.phone1 = response.data.phone1;
+                self.phone2 = response.data.phone2;
+                self.source = response.data.source;
             });
         },
-        setContact: function setContact(contact) {
-            self = this;
-            axios.post('/api/contacts/' + contact.id, {
-                company: self.company,
-                name: self.name,
-                lastname: self.lastName,
-                email1: self.email1,
-                email2: self.email2,
-                phone1: self.phone1,
-                phone2: self.phone2
-            }).then(function (response) {
-                self.isContactSaved = true;
-            });
-        },
-        getTickets: function getTickets(status) {
-            self = this;
-            self.isLoading = true;
-            axios.get('/api/tickets/' + status).then(function (response) {
-                self.records = response.data;
-                self.current = status;
-                self.isLoading = false;
-            });
-        },
-        changeStatus: function changeStatus(ticket, status) {
-            this.isLoading = true;
-            self = this;
-            axios.post('/api/ticket/' + ticket + '/status/' + status).then(function (response) {
-                self.getPipeline();
-                self.getTickets(self.current);
-            });
-        },
-        getComments: function getComments(ticket) {
-            self = this;
-            //self.isLoading = true;
-            axios.get('/api/ticket/' + ticket + '/comments').then(function (response) {
-                self.comments = response.data;
-                //self.isLoading = false;
-            });
-        },
-        addComment: function addComment(ticket) {
-            //this.isLoading = true;
-            self = this;
-            axios.post('/api/ticket/' + ticket + '/comment', {
-                message: self.comment,
-                user_id: self.user_id,
-                issue_id: ticket,
-                email: self.sendEmail
-            }).then(function () {
-                self.comment = '';
-                self.sendEmail = false;
-                self.getComments(ticket);
-            });
+        update: function update(field, value) {
+            var self = this;
+            var url = '/api/contact/' + this.id + '/update';
+            var data = { field: field, value: value };
+            axios.post(url, data);
         }
     }
 });
 
 /***/ }),
-/* 48 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "ul",
-      { staticClass: "nav nav-pills nav-justified", attrs: { id: "status" } },
-      [
-        _vm.isLoading
-          ? _c("li")
-          : _vm._l(_vm.items, function(item) {
-              return _c("li", { class: { active: _vm.current == item.id } }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.getTickets(item.id)
-                      }
-                    }
-                  },
-                  [
-                    _c("span", { staticStyle: { "font-size": "20px" } }, [
-                      _vm._v(_vm._s(item.count))
-                    ]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(item.name) +
-                        "\n            "
-                    )
-                  ]
-                )
-              ])
-            })
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table table-responsive table-bordered datagrid" },
-      [
-        _vm._m(0),
+  return _vm.display
+    ? _c("div", [
+        _c("h2", [_vm._v("Contact")]),
         _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.records.data, function(record) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(record.id))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "div",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.getDetails(record)
-                      }
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "form-group col-md-12" }, [
+            _c("label", [_vm._v("Company")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.company,
+                  expression: "company"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.company },
+              on: {
+                blur: function($event) {
+                  _vm.update("company", _vm.company)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.company = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.name,
+                  expression: "name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.name },
+              on: {
+                blur: function($event) {
+                  _vm.update("name", _vm.name)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Last Name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lastName,
+                  expression: "lastName"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.lastName },
+              on: {
+                blur: function($event) {
+                  _vm.update("lastname", _vm.lastName)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.lastName = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Email 1")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email1,
+                  expression: "email1"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.email1 },
+              on: {
+                blur: function($event) {
+                  _vm.update("email1", _vm.email1)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email1 = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Email 2")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email2,
+                  expression: "email2"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.email2 },
+              on: {
+                blur: function($event) {
+                  _vm.update("email2", _vm.email2)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email2 = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Phone 1")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.phone1,
+                  expression: "phone1"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.phone1 },
+              on: {
+                blur: function($event) {
+                  _vm.update("phone1", _vm.phone1)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.phone1 = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Phone 2")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.phone2,
+                  expression: "phone2"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.phone2 },
+              on: {
+                blur: function($event) {
+                  _vm.update("phone2", _vm.phone2)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.phone2 = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-12" }, [
+            _c("label", [_vm._v("Source")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.source,
+                  expression: "source"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.source },
+              on: {
+                blur: function($event) {
+                  _vm.update("source", _vm.source)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.source = $event.target.value
+                }
+              }
+            })
+          ])
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-d87da04a", module.exports)
+  }
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/Ticket.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Ticket.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-68651e21", Component.options)
+  } else {
+    hotAPI.reload("data-v-68651e21", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            display: false,
+            description: ''
+        };
+    },
+    created: function created() {
+        var self = this;
+        this.$root.$on('showTicket', function (id) {
+            if (self.id === id) {
+                self.get();
+                self.display = true;
+            }
+        });
+        this.$root.$on('getTickets', function () {
+            self.display = false;
+        });
+    },
+
+    methods: {
+        get: function get() {
+            var self = this;
+            var url = '/api/ticket/' + this.id;
+            axios.get(url).then(function (response) {
+                self.description = response.data.description;
+            });
+        },
+        changeStatus: function changeStatus(ticket, status) {
+            self = this;
+            axios.post('/api/ticket/' + ticket + '/status/' + status).then(function () {
+                self.$root.$emit('changeStatus');
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.display
+    ? _c("div", [
+        _c("h2", [_vm._v("Details")]),
+        _vm._v(" "),
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.description) } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn-group" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("ul", { staticClass: "dropdown-menu" }, [
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeStatus(_vm.id, 6)
                     }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(record.summary) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.row == record.id
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "row",
-                        staticStyle: { "margin-top": "10px" }
-                      },
-                      [
-                        _c("div", { staticClass: "col-md-6" }, [
-                          _c("h2", [_vm._v("Contact")]),
-                          _vm._v(" "),
-                          _vm.isContactSaved
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "alert alert-success alert-dismissible",
-                                  attrs: { role: "alert" }
-                                },
-                                [
-                                  _vm._m(1, true),
-                                  _vm._v(" "),
-                                  _c("strong", [_vm._v("Success!")]),
-                                  _vm._v(
-                                    " The contact was saved successfully.\n                        "
-                                  )
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "form-group col-md-12" }, [
-                              _c("label", [_vm._v("Company")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.company,
-                                    expression: "company"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.company },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.company = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Name")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.name,
-                                    expression: "name"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.name },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.name = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Last Name")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.lastName,
-                                    expression: "lastName"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.lastName },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.lastName = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Email 1")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.email1,
-                                    expression: "email1"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.email1 },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.email1 = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Email 2")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.email2,
-                                    expression: "email2"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.email2 },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.email2 = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Phone 1")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.phone1,
-                                    expression: "phone1"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.phone1 },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.phone1 = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
-                              _c("label", [_vm._v("Phone 2")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.phone2,
-                                    expression: "phone2"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text" },
-                                domProps: { value: _vm.phone2 },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.phone2 = $event.target.value
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-12" }, [
-                              _c("button", { staticClass: "btn btn-default" }, [
-                                _vm._v("Cancel")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.setContact(record.contact)
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "Save\n                                "
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-md-6" },
-                          [
-                            _c("h2", [_vm._v("Details")]),
-                            _vm._v(" "),
-                            _c("div", {
-                              domProps: {
-                                innerHTML: _vm._s(record.description)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "btn-group" }, [
-                              _vm._m(2, true),
-                              _vm._v(" "),
-                              _c("ul", { staticClass: "dropdown-menu" }, [
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.changeStatus(record.id, 6)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("New")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.changeStatus(record.id, 7)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Pending")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.changeStatus(record.id, 8)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Closed")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.changeStatus(record.id, 9)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Trash")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          _vm.changeStatus(record.id, 10)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Sale")]
-                                  )
-                                ])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("h2", [_vm._v("Notes")]),
-                            _vm._v(" "),
-                            _vm._l(_vm.comments.data, function(comment) {
-                              return [
-                                _c("div", { staticClass: "note" }, [
-                                  _c("p", [_vm._v(_vm._s(comment.message))]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "author" }, [
-                                    _vm._v(
-                                      _vm._s(
-                                        comment.user.name +
-                                          " " +
-                                          comment.user.lastName
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "label",
-                                    { staticClass: "date pull-right" },
-                                    [_vm._v(_vm._s(comment.created_at))]
-                                  )
-                                ])
-                              ]
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "form",
-                              {
-                                attrs: { method: "post" },
-                                on: {
-                                  submit: function($event) {
-                                    $event.preventDefault()
-                                    _vm.addComment(record.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c("div", { staticClass: "form-group" }, [
-                                  _c("textarea", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.comment,
-                                        expression: "comment"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    attrs: { placeholder: "new note..." },
-                                    domProps: { value: _vm.comment },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.comment = $event.target.value
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "form-group" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      attrs: { type: "submit" }
-                                    },
-                                    [_vm._v("Save")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "pull-right" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendEmail,
-                                          expression: "sendEmail"
-                                        }
-                                      ],
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        checked: Array.isArray(_vm.sendEmail)
-                                          ? _vm._i(_vm.sendEmail, null) > -1
-                                          : _vm.sendEmail
-                                      },
-                                      on: {
-                                        __c: function($event) {
-                                          var $$a = _vm.sendEmail,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.sendEmail = $$a.concat([
-                                                  $$v
-                                                ]))
-                                            } else {
-                                              $$i > -1 &&
-                                                (_vm.sendEmail = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
-                                            }
-                                          } else {
-                                            _vm.sendEmail = $$c
-                                          }
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(
-                                      " Send email to contact\n                                "
-                                    )
-                                  ])
-                                ])
-                              ]
-                            )
-                          ],
-                          2
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ])
+                  }
+                },
+                [_vm._v("New")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeStatus(_vm.id, 7)
+                    }
+                  }
+                },
+                [_vm._v("Pending")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeStatus(_vm.id, 8)
+                    }
+                  }
+                },
+                [_vm._v("Closed")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeStatus(_vm.id, 9)
+                    }
+                  }
+                },
+                [_vm._v("Trash")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeStatus(_vm.id, 10)
+                    }
+                  }
+                },
+                [_vm._v("Sale")]
+              )
             ])
-          })
-        )
-      ]
-    )
-  ])
+          ])
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Summary")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -43234,10 +43634,7 @@ var staticRenderFns = [
           "aria-expanded": "false"
         }
       },
-      [
-        _vm._v("\n                                Status "),
-        _c("span", { staticClass: "caret" })
-      ]
+      [_vm._v("\n            Status "), _c("span", { staticClass: "caret" })]
     )
   }
 ]
@@ -43246,12 +43643,275 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5919669d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-68651e21", module.exports)
   }
 }
 
 /***/ }),
-/* 49 */
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/tickets/Comments.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Comments.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-695d9c6e", Component.options)
+  } else {
+    hotAPI.reload("data-v-695d9c6e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'user_id'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            display: false,
+            sendEmail: false,
+            comment: '',
+            comments: []
+        };
+    },
+    created: function created() {
+        var self = this;
+        this.$root.$on('showTicket', function (id) {
+            if (self.id === id) {
+                self.get(id);
+                self.display = true;
+            }
+        });
+        this.$root.$on('getTickets', function () {
+            self.display = false;
+        });
+    },
+
+    methods: {
+        get: function get(ticket) {
+            self = this;
+            axios.get('/api/ticket/' + ticket + '/comments').then(function (response) {
+                self.comments = response.data;
+            });
+        },
+        add: function add(ticket) {
+            self = this;
+            axios.post('/api/ticket/' + ticket + '/comment', {
+                message: self.comment,
+                user_id: self.user_id,
+                issue_id: ticket,
+                email: self.sendEmail
+            }).then(function () {
+                self.comment = '';
+                self.sendEmail = false;
+                self.get(ticket);
+            });
+        },
+        changeStatus: function changeStatus(ticket, status) {
+            var self = this;
+            axios.post('/api/ticket/' + ticket + '/status/' + status).then(function () {
+                self.$root.$emit('changeStatus');
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.display
+    ? _c(
+        "div",
+        [
+          _c("h2", [_vm._v("Notes")]),
+          _vm._v(" "),
+          _vm._l(_vm.comments, function(comment) {
+            return [
+              _c("div", { staticClass: "note" }, [
+                _c("p", [_vm._v(_vm._s(comment.message))]),
+                _vm._v(" "),
+                _c("label", { staticClass: "author" }, [
+                  _vm._v(
+                    _vm._s(comment.user.name + " " + comment.user.lastName)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "date pull-right" }, [
+                  _vm._v(_vm._s(comment.created_at))
+                ])
+              ])
+            ]
+          }),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.add(_vm.id)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.comment,
+                      expression: "comment"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { placeholder: "new note..." },
+                  domProps: { value: _vm.comment },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.comment = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Save")]
+                ),
+                _vm._v(" "),
+                _c("label", { staticClass: "pull-right" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.sendEmail,
+                        expression: "sendEmail"
+                      }
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(_vm.sendEmail)
+                        ? _vm._i(_vm.sendEmail, null) > -1
+                        : _vm.sendEmail
+                    },
+                    on: {
+                      __c: function($event) {
+                        var $$a = _vm.sendEmail,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.sendEmail = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.sendEmail = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.sendEmail = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" Send email to contact\n            ")
+                ])
+              ])
+            ]
+          )
+        ],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-695d9c6e", module.exports)
+  }
+}
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
