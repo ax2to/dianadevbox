@@ -31,6 +31,18 @@
                 <input v-model="phone2" v-on:blur="update('phone2',phone2)" type="text" class="form-control"/>
             </div>
             <div class="form-group col-md-12">
+                <label>Address</label>
+                <input v-model="address" v-on:blur="update('address',address)" type="text" class="form-control"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Country</label>
+                <input v-model="country" v-on:blur="update('country',country)" type="text" class="form-control"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label>City</label>
+                <input v-model="city" v-on:blur="update('city',city)" type="text" class="form-control"/>
+            </div>
+            <div class="form-group col-md-12">
                 <label>Source</label>
                 <input v-model="source" v-on:blur="update('source',source)" type="text" class="form-control"/>
             </div>
@@ -53,6 +65,9 @@
                 email2: '',
                 phone1: '',
                 phone2: '',
+                address: '',
+                country: '',
+                city: '',
                 source: ''
             }
         },
@@ -80,6 +95,9 @@
                     self.email2 = response.data.email2;
                     self.phone1 = response.data.phone1;
                     self.phone2 = response.data.phone2;
+                    self.address = response.data.address;
+                    self.country = response.data.country;
+                    self.city = response.data.city;
                     self.source = response.data.source;
                 });
             },
