@@ -30,6 +30,7 @@ class CommentMail extends Mailable
      */
     public function build()
     {
+        $this->subject = 'Wortix: Nuevo Mensaje';
         return $this->view('emails.comment-mail');
     }
 }
