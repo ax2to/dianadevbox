@@ -3,7 +3,7 @@
         <h2>Notes</h2>
         <template v-for="comment in comments">
             <div class="note">
-                <p>{{ comment.message }}</p>
+                <div v-html="comment.message"></div>
                 <label class="author">{{ comment.user.name + ' ' + comment.user.lastName }}</label>
                 <label class="date pull-right">{{ comment.created_at }}</label>
             </div>

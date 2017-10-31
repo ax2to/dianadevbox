@@ -25,8 +25,10 @@ Route::get('/pipeline', function (Request $request) {
     $data = [];
     foreach ($status as $s) {
         $issues = \App\Models\IssueModel::where('type_id', 5)
-            ->where('status_id', $s->id)
-            ->where('assign_to', $request->user_id);
+            ->where('status_id', $s->id);
+        if ($request->user_id != 'all') {
+            $issues->where('assign_to', $request->user_id);
+        }
         $data[] = ['id' => $s->id, 'name' => $s->name, 'count' => $issues->count()];
     }
     return $data;
@@ -35,13 +37,14 @@ Route::get('/pipeline', function (Request $request) {
 Route::get('/tickets', function (Request $request) {
     $issues = \App\Models\IssueModel::where('type_id', 5)
         ->where('status_id', $request->status)
-        ->where('assign_to', $request->user_id)
         ->with(['status', 'contact'])
-        ->orderBy('id', 'desc')
-        ->limit(20)
-        ->get();
+        ->orderBy('id', 'desc');
 
-    return $issues;
+    if ($request->user_id != 'all') {
+        $issues->where('assign_to', $request->user_id);
+    }
+
+    return $issues->limit(20)->get();
 });
 
 Route::post('/ticket/{issue}/status/{status}', function (\App\Models\IssueModel $issue, $status) {
@@ -74,9 +77,15 @@ Route::post('/ticket/{ticket}/comment', function (Request $request) {
         $contact = ContactModel::find($issue->contact_id);
         if ($contact->email1 != '') {
             Mail::to($contact->email1)->send(new CommentMail($comment));
+            $comment->message .= '<div class="email-sent">Email sent to: ' . $contact->email1 . '</div>';
+            $comment->save();
         }
         if ($contact->email2 != '') {
             Mail::to($contact->email2)->send(new CommentMail($comment));
+
+
+            $comment->message .= '<div class="email-sent">Email sent to: ' . $contact->email2 . '</div>';
+            $comment->save();
         }
     }
 
