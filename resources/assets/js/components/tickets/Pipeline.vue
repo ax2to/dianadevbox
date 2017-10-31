@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row form-inline">
+        <div v-if="role_id == 1" class="row form-inline">
             <div class="form-group col-md-6">
                 <label>User: </label>
                 <select v-model="user" v-on:change="onChangeUser()" class="form-control">

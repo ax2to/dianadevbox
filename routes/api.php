@@ -44,7 +44,7 @@ Route::get('/tickets', function (Request $request) {
         $issues->where('assign_to', $request->user_id);
     }
 
-    return $issues->limit(20)->get();
+    return $issues->limit(200)->get();
 });
 
 Route::post('/ticket/{issue}/status/{status}', function (\App\Models\IssueModel $issue, $status) {
