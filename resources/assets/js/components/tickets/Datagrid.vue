@@ -21,6 +21,13 @@
             </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <li v-for="i in pagination.last" v-bind:class="{ active: i === pagination.current}">
+                    <a v-on:click.prevent="getPage(i)" href="#">{{ i }}</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
@@ -40,22 +47,32 @@
                 isLoading: true,
                 pipeline: 6,
                 user: 0,
-                items: []
+                items: [],
+                pagination: {current: 1, last: 1, total: 15, per_page: 15, max: 6}
             }
         },
         methods: {
             get(status) {
                 let self = this;
-                let url = '/api/tickets?user_id=' + this.user + '&status=' + status;
+                let url = '/api/tickets?user_id=' + this.user + '&status=' + status + '&page=' + this.pagination.current;
                 axios.get(url)
                     .then(function (response) {
-                        self.items = response.data;
+                        self.items = response.data.data;
                         self.isLoading = false;
                         self.$root.$emit('getTickets');
+
+                        self.pagination.current = response.data.current_page;
+                        self.pagination.last = response.data.last_page;
+                        self.pagination.total = response.data.total;
+                        self.pagination.per_page = response.data.per_page;
                     });
             },
             showTicket(id) {
                 this.$root.$emit('showTicket', id);
+            },
+            getPage(page) {
+                this.pagination.current = page;
+                this.get(this.pipeline);
             }
         },
         created() {
@@ -66,6 +83,7 @@
             this.$root.$on('changePipeline', function (user_id, id) {
                 self.pipeline = id;
                 self.user = user_id;
+                self.pagination.current = 1;
                 self.get(self.pipeline);
             });
             this.$root.$on('changeStatus', function () {

@@ -4,9 +4,6 @@
         <div class="panel-body">
             <slot>this is a panel body</slot>
         </div>
-        <div class="panel-footer">
-            {{ footer }}
-        </div>
     </section>
 </template>
 
