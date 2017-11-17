@@ -43233,6 +43233,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id', 'ticket_id'],
@@ -43241,6 +43245,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             display: false,
             company: '',
+            website: '',
             name: '',
             lastName: '',
             email1: '',
@@ -43306,7 +43311,7 @@ var render = function() {
         _c("h2", [_vm._v("Contact")]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("div", { staticClass: "form-group col-md-6" }, [
             _c("label", [_vm._v("Company")]),
             _vm._v(" "),
             _c("input", {
@@ -43330,6 +43335,35 @@ var render = function() {
                     return
                   }
                   _vm.company = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", [_vm._v("Website")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.website,
+                  expression: "website"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.website },
+              on: {
+                blur: function($event) {
+                  _vm.update("website", _vm.website)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.website = $event.target.value
                 }
               }
             })

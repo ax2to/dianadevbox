@@ -1,4 +1,4 @@
-@extends('emails.layout')
+@extends($layout)
 
 @section('content')
     {!! nl2br($comment->message) !!}

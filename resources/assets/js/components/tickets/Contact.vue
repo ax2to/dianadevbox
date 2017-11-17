@@ -2,9 +2,13 @@
     <div v-if="display">
         <h2>Contact</h2>
         <div class="row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label>Company</label>
                 <input v-model="company" v-on:blur="update('company',company)" type="text" class="form-control"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Website</label>
+                <input v-model="website" v-on:blur="update('website',website)" type="text" class="form-control"/>
             </div>
             <div class="form-group col-md-6">
                 <label>Name</label>
@@ -59,6 +63,7 @@
             return {
                 display: false,
                 company: '',
+                website: '',
                 name: '',
                 lastName: '',
                 email1: '',
