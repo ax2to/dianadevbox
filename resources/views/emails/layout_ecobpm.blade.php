@@ -147,7 +147,11 @@
                     <td align="right"><span
                                 style="font-family: 'Roboto', sans-serif; font-size: 30px; font-weight: bold; color: #FA9900;">Now available on: </span>
                     </td>
-                    <td align="center"><img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/aws-marke-place.png" style="width: 80%;"></td>
+                    <td align="center">
+                        <a href="https://aws.amazon.com/marketplace/pp/B075NT6GFJ?qid=1511206273269" target="_blank">
+                            <img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/aws-marke-place.png" style="width: 80%;">
+                        </a>
+                    </td>
                 </tr>
             </table>
 
