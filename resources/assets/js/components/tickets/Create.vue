@@ -1,6 +1,12 @@
 <template>
     <div v-if="display" class="row" style="margin-top: 20px">
         <div class="form-group col-md-12">
+            <label>Project</label>
+            <select v-model="project_id" class="form-control">
+                <option v-for="project in projects" v-bind:value="project.id">{{ project.name }}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-12">
             <label>Company</label>
             <input v-model="company" type="text" class="form-control"/>
         </div>
@@ -57,6 +63,13 @@
                 phone2: '',
                 source: '',
                 pipeline: 6,
+                project_id: 0,
+                projects: [
+                    {id: 8, name: 'ECOBPM'},
+                    {id: 6, name: 'KAJA'},
+                    {id: 5, name: 'Techno Global'},
+                    {id: 3, name: 'Wortix'},
+                ]
             }
         },
         methods: {
@@ -76,12 +89,14 @@
                     email2: this.email2,
                     phone1: this.phone1,
                     phone2: this.phone2,
-                    source: this.source
+                    source: this.source,
+                    project_id: this.project_id
                 };
                 axios.post(url, data).then(function (response) {
                     self.$root.$emit('storeTicket');
                     self.display = false;
                     self.company = self.name = self.lastName = self.email1 = self.email2 = self.phone1 = self.phone2 = self.source = '';
+                    self.project_id = 0;
                 });
             }
         },

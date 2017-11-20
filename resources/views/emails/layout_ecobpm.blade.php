@@ -2,422 +2,249 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
-    <title>ECOBPM email</title>
-
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8"/>
+    <!-- view port meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>ECOBPM</title>
     <style type="text/css">
 
-        body {
-            width: 100%;
-            background-color: #dbdad9;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            mso-margin-top-alt: 0px;
-            mso-margin-bottom-alt: 0px;
-            mso-padding-alt: 0px 0px 0px 0px;
-        }
+        <
+        link href
 
-        p, h1, h2, h3, h4 {
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
+        =
+        "https://fonts.googleapis.com/css?family=Roboto:400,700"
+        rel
 
-        span.preheader {
-            display: none;
-            font-size: 1px;
-        }
-
-        html {
-            width: 100%;
+        =
+        "stylesheet"
+        >
+            /* hacks */
+        * {
+            -webkit-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            max-height: 1000000px;
         }
 
         table {
-            font-size: 12px;
-            border: 0;
+            border-collapse: collapse !important;
         }
 
-        .menu-space {
-            padding-right: 25px;
+        #outlook a {
+            padding: 0;
         }
 
-        a, a:hover {
-            text-decoration: none;
-            color: #97a53f;
+        .ReadMsgBody {
+            width: 100%;
         }
 
-        @media only screen and (max-width: 640px) {
-            body {
-                width: auto !important;
-            }
+        .ExternalClass {
+            width: 100%;
+        }
 
-            table [class=main] {
-                width: 440px !important;
-            }
+        .ExternalClass * {
+            line-height: 100%;
+        }
 
-            table [class=two-left] {
-                width: 420px !important;
-                margin: 0px auto;
-            }
+        .ios_geo a {
+            color: #1c1c1c !important;
+            text-decoration: none !important;
+        }
 
-            table [class=full] {
-                width: 100% !important;
-                margin: 0px auto;
-            }
+        /* responsive styles */
+        @media only screen and (max-width: 600px) {
 
-            table [class=two-left-inner] {
-                width: 400px !important;
-                margin: 0px auto;
-            }
-
-            table [class=menu-icon] {
+            /* global styles */
+            .hide {
+                display: none !important;
                 display: none;
             }
 
-        }
+            .blockwrap {
+                display: block !important;
+            }
 
-        @media only screen and (max-width: 479px) {
-            body {
+            .showme {
+                display: block !important;
                 width: auto !important;
+                overflow: visible !important;
+                float: none !important;
+                max-height: inherit !important;
+                max-width: inherit !important;
+                line-height: auto !important;
+                margin-top: 0px !important;
+                visibility: inherit !important;
             }
 
-            table [class=main] {
-                width: 310px !important;
+            *[class].movedown {
+                display: table-footer-group !important;
             }
 
-            table [class=two-left] {
-                width: 300px !important;
-                margin: 0px auto;
+            *[class].moveup {
+                display: table-header-group !important;
             }
 
-            table [class=full] {
-                width: 100% !important;
-                margin: 0px auto;
+            /* font styles */
+            *[class].textright {
+                text-align: right !important;
             }
 
-            table [class=two-left-inner] {
-                width: 280px !important;
-                margin: 0px auto;
+            *[class].textleft {
+                text-align: left !important;
             }
 
-            table [class=menu-icon] {
-                display: none;
+            *[class].textcenter {
+                text-align: center !important;
+            }
+
+            *[class].font27 {
+                font-size: 27px !important;
+                font-weight: normal !important;
+                line-height: 27px !important;
+            }
+
+            /* width and heights */
+            *[class].hX {
+                height: Xpx !important;
+            }
+
+            *[class].wX {
+                width: Xpx !important;
             }
 
         }
-
 
     </style>
-
 </head>
 
-<body yahoo="fix" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body style="margin:0; padding:0;" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
 
-<!--Main Table Start-->
+<!--[if gte mso 15]>
+<style type="text/css" media="all">
+    tr {
+        font-size: 1px;
+        mso-line-height-alt: 0;
+        mso-margin-top-alt: 1px;
+    }
+</style>
+<![endif]-->
 
-<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#dbdad9"
-       style="background:#dbdad9;">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F7F7F7;">
     <tr>
         <td align="center" valign="top">
 
-            <repeater>
 
+            <table style="width: 100%; max-width: 700px;">
+                <tr>
+                    <td><img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/banner.png" style="width: 100%;"></td>
+                </tr>
+            </table>
 
-                <!--Author Part Start-->
+            <table cellpadding="5px"
+                   style="background-color: #fff; border-width: 1px; border-style: solid; border-color: #E3E3E3; width: 100%; max-width: 700px;">
+                <tr>
+                    <td align="right"><span
+                                style="font-family: 'Roboto', sans-serif; font-size: 30px; font-weight: bold; color: #FA9900;">Now available on: </span>
+                    </td>
+                    <td align="center"><img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/aws-marke-place.png" style="width: 80%;"></td>
+                </tr>
+            </table>
 
-                <layout label="gm-2-Author Part">
+            <table style="background-color: #fff; border-width: 1px; border-style: solid; border-color: #E3E3E3; width: 100%; max-width: 700px;">
 
-                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-                           mc:repeatable="GetMail" mc:variant="gm-2-Author Part">
-                        <tr>
-                            <td align="center" valign="top">
-                                <table width="700" border="0" align="center" cellpadding="0" cellspacing="0"
-                                       class="main">
-                                    <tr>
-                                        <td align="left" valign="top" style="background:#16b17c;">
+                <tr>
 
-                                            <table width="350" border="0" align="left" cellpadding="0" cellspacing="0"
-                                                   class="full">
-                                                <tr>
-                                                    <td align="center" valign="top"><img mc:edit="gm-06" editable="true"
-                                                                                         src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/img-ecobpm.jpg"
-                                                                                         width="350" height="525" alt=""
-                                                                                         style="display:block;width:100% !important; height:auto !important; "/>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                    <td>
 
-                                            <table width="300" border="0" align="right" cellpadding="0" cellspacing="0"
-                                                   class="two-left-inner">
-                                                <tr>
-                                                    <td height="80" align="left" valign="top" style="line-height:80px;">
-                                                        &nbsp;
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="top">
-                                                        <table width="250" border="0" align="left" cellpadding="0"
-                                                               cellspacing="0">
-                                                            <tr>
-                                                                <td align="left" valign="top">
-                                                                    <table width="100%" border="0" align="left"
-                                                                           cellpadding="0" cellspacing="0">
-                                                                        <tr>
-                                                                            <td align="left" valign="top"
-                                                                                style="font-family:Arial, Helvetica, sans-serif; font-size:30px; color:#FFF;"
-                                                                                mc:edit="gm-07">
-                                                                                <multiline>Nueva plataforma</multiline>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td align="left" valign="top"
-                                                                                style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFF; font-weight:bold; padding-top:12px;"
-                                                                                mc:edit="gm-08">
-                                                                                <multiline>Nuevo diseño, desarrollo
-                                                                                    agil
-                                                                                </multiline>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="left" valign="top"
-                                                                    style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFF; line-height:34px; padding:24px 0px 35px 0px;"
-                                                                    mc:edit="gm-09">
-                                                                    <multiline>Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry Lorem Ipsum
-                                                                        has been the industry's standspecimen book.
-                                                                    </multiline>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="left" valign="top">
-                                                                    <table width="170" border="0" align="left"
-                                                                           cellpadding="0" cellspacing="0">
-                                                                        <tr>
-                                                                            <td align="left" valign="top"></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="40" align="left" valign="top" style="line-height:40px;">
-                                                        &nbsp;
-                                                    </td>
-                                                </tr>
-                                            </table>
+                        <table width="80%" align="center" cellpadding="20px;">
+                            <tr>
+                                <td>
+                                    <span style="color: #5E758D; font-family: 'Roboto', sans-serif; font-size: 23px; font-weight: bold; text-align: left;">Dear Facilities Maintenance Manager:</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #A3A3A3; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left;">You Facilities Management Operation needs a system that you can customize to your needs without incurring in service fees.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #A3A3A3; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left;">You need a system that you don’t have to maintain.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #A3A3A3; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left;"><strong>ECOBPM brings you that and more:</strong></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul style="color: #97A53F; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left;">
+                                        <li><span style="color: #A3A3A3;">Geo-Dispatch Work Orders</span></li>
+                                        <li><span style="color: #A3A3A3;">Share progress & results with Clients and Vendors</span>
+                                        </li>
+                                        <li>
+                                            <span style="color: #A3A3A3;">Pipeline Management, for each type of user</span>
+                                        </li>
+                                        <li><span style="color: #A3A3A3;">Cost Management</span></li>
+                                        <li><span style="color: #A3A3A3;">Integration ease</span></li>
+                                        <li><span style="color: #A3A3A3;">Recommended by USACE</span></li>
+                                        <li><span style="color: #A3A3A3;">Currently being used on military bases</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
 
+                        <table width="80%" align="center" cellpadding="20px;"
+                               style="border-width: 1px; border-style: solid; border-color: #E3E3E3;">
+                            <tr>
+                                <td>
+                                    <span style="color: #A3A3A3; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left;">
+                                        @yield('content')
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
 
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
+                        <table width="80%" align="center" cellpadding="30px" align="center">
+                            <tr>
+                                <td align="center">
+                                    <img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/ecobpm-amazon-web-service.png"
+                                         style="width: 80%; max-width: 400px;">
+                                </td>
+                            </tr>
+                        </table>
 
+                    </td>
 
-                </layout>
-                <!--Author Part End-->
+                </tr>
 
+            </table>
 
-                <!--Social Media Part Start-->
+            <table style="background-color: #fff; border-width: 1px; border-style: solid; border-color: #E3E3E3; width: 100%; max-width: 700px;"
+                   cellpadding="20px">
+                <tr>
+                    <td><a href="https://ecobpm.com/" target="_blank"
+                           style="color: #97A53F; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left; text-decoration: none;">www.ecobm.com</a>
+                    </td>
+                    <td align="right">
+                        <a href="https://www.linkedin.com/company/3361876/" target="_blank"><img
+                                    src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/linkedin.png"></a>
+                        <a href="https://www.facebook.com/ecobpm/" target="_blank"><img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/facebook.png"></a>
+                        <a href="https://twitter.com/ecobpm" target="_blank"><img src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/twitter.png"></a>
+                        <a href="https://www.youtube.com/user/ECOBPMSoftware" target="_blank"><img
+                                    src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/youtube.png"></a>
+                    </td>
+                </tr>
+            </table>
 
-                <layout label="gm-3-Social Media Part">
-
-                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-                           mc:repeatable="GetMail" mc:variant="gm-3-Social Media Part">
-                        <tr>
-                            <td align="center" valign="top">
-                                <table width="700" border="0" align="center" cellpadding="0" cellspacing="0"
-                                       class="main">
-                                    <tr>
-                                        <td align="left" valign="top" style="background:#f4f4f4;">
-
-                                            <table width="320" border="0" align="left" cellpadding="0" cellspacing="0"
-                                                   class="two-left-inner">
-                                                <tr>
-                                                    <td height="60" align="right" valign="middle">
-                                                        <table width="280" border="0" cellspacing="0" cellpadding="0">
-                                                            <tr>
-                                                                <td width="45" align="left" valign="middle">
-                                                                    <table width="35" border="0" align="left"
-                                                                           cellpadding="0" cellspacing="0">
-                                                                        <tr>
-                                                                            <td align="center" valign="middle"
-                                                                                style="padding-top:4px;"><img
-                                                                                        mc:edit="gm-11" editable="true"
-                                                                                        src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/mail-icon.png"
-                                                                                        width="32" height="32" alt=""/>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                                <td width="235" align="left" valign="middle"
-                                                                    style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#52514e;"
-                                                                    mc:edit="gm-12">
-                                                                    <multiline>contact@ecobpm.com</multiline>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-
-                                            <table width="350" border="0" align="right" cellpadding="0" cellspacing="0"
-                                                   class="full">
-                                                <tr>
-                                                    <td width="70" height="60" align="center" valign="middle"><a
-                                                                href="https://www.facebook.com/ecobpm/"><img
-                                                                    mc:edit="gm-13" editable="true"
-                                                                    src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/facebook-icon.png"
-                                                                    width="70"
-                                                                    height="60" alt=""
-                                                                    style="display:block;width:100% !important; height:auto !important; "/></a>
-                                                    </td>
-                                                    <td width="70" height="60" align="center" valign="middle"><a
-                                                                href="https://twitter.com/ecobpm"><img mc:edit="gm-14"
-                                                                                                       editable="true"
-                                                                                                       src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/twitter-icon.png"
-                                                                                                       width="70"
-                                                                                                       height="60"
-                                                                                                       alt=""
-                                                                                                       style="display:block;width:100% !important; height:auto !important; "/></a>
-                                                    </td>
-                                                    <td width="70" height="60" align="center" valign="middle"><a
-                                                                href="https://www.linkedin.com/company/ecobpm/"><img
-                                                                    mc:edit="gm-15" editable="true"
-                                                                    src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/linkedin-icon.jpg"
-                                                                    width="70"
-                                                                    height="60" alt=""
-                                                                    style="display:block;width:100% !important; height:auto !important; "/></a>
-                                                    </td>
-                                                    <td width="70" height="60" align="center" valign="middle"><a
-                                                                href="https://www.youtube.com/user/ECOBPMSoftware"><img
-                                                                    mc:edit="gm-16" editable="true"
-                                                                    src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/youtube-icon.jpg"
-                                                                    width="70" height="60"
-                                                                    alt=""
-                                                                    style="display:block;width:100% !important; height:auto !important; "/></a>
-                                                    </td>
-                                                    <td width="70" height="60" align="center" valign="middle"><a
-                                                                href="https://ecobpm.com/"><img mc:edit="gm-17"
-                                                                                                editable="true"
-                                                                                                src="https://s3.amazonaws.com/diandevbox/emails/ecobpm/web-icon.jpg"
-                                                                                                width="70" height="60"
-                                                                                                alt=""
-                                                                                                style="display:block;width:100% !important; height:auto !important; "/></a>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-
-                </layout>
-
-                <!--Social Media Part End-->
-
-
-                <!--Message Start-->
-
-                <layout label="gm-4-Welcome Part">
-
-                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-                           mc:repeatable="GetMail" mc:variant="gm-4-Welcome Part">
-                        <tr>
-                            <td align="center" valign="top">
-                                <table width="700" border="0" align="center" cellpadding="0" cellspacing="0"
-                                       class="main">
-                                    <tr>
-                                        <td align="center" valign="top" style="background:#FFF;">
-                                            <table width="600" border="0" align="center" cellpadding="0" cellspacing="0"
-                                                   class="two-left-inner">
-                                                <tr>
-                                                    <td height="110" align="left" valign="top"
-                                                        style="line-height:110px;">&nbsp;
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="center" valign="top"
-                                                        style="font-family:Arial, Helvetica, sans-serif; font-size:30px; color:#52514e; line-height:40px; font-weight:normal;"
-                                                        mc:edit="gm-19">
-                                                        <multiline>@yield('content')</multiline>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="100" align="left" valign="top"
-                                                        style="line-height:100px;">&nbsp;
-                                                    </td>
-                                                </tr>
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-
-                </layout>
-                <!--Message Part End-->
-
-
-                <!--Copyright Start-->
-
-                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" mc:repeatable="GetMail"
-                       mc:variant="gm-34-Copyright part">
-                    <tr>
-                        <td align="center" valign="top">
-                            <table width="700" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
-                                <tr>
-                                    <td align="center" valign="top" style="background:#f6f6f6;">
-                                        <table width="600" border="0" cellspacing="0" cellpadding="0" class="two-left">
-                                            <tr>
-                                                <td height="25" align="left" valign="top"
-                                                    style=" font-size:25px; line-height:25px;">&nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" valign="top"
-                                                    style="font-family:Verdana, Geneva, sans-serif; font-size:13px; color:#312e2e;"
-                                                    mc:edit="gm-150">
-                                                    <multiline>Copyright &copy; 2017 ECOBPM .</multiline>
-                                                    <unsubscribe><a href="#">Unsubscribe</a></unsubscribe>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height="25" align="left" valign="top"
-                                                    style=" font-size:25px; line-height:25px;">&nbsp;
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-
-                <!--Copyright End-->
 
         </td>
     </tr>
 </table>
 
-<!--Main Table End-->
 
 </body>
 </html>

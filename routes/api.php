@@ -125,7 +125,7 @@ Route::post('/ticket/create', function (Request $request) {
 
     $issue = new \App\Models\IssueModel();
     $issue->company_id = 1;
-    $issue->project_id = 4;
+    $issue->project_id = $request->project_id;
     $issue->type_id = 5;
     $issue->summary = $data1;
     $issue->description = $data2;
