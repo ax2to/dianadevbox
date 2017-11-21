@@ -231,7 +231,7 @@
                    cellpadding="20px">
                 <tr>
                     <td><a href="https://ecobpm.com/" target="_blank"
-                           style="color: #97A53F; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left; text-decoration: none;">www.ecobm.com</a>
+                           style="color: #97A53F; font-family: 'Roboto', sans-serif; font-size: 17px; text-align: left; text-decoration: none;">www.ecobpm.com</a>
                     </td>
                     <td align="right">
                         <a href="https://www.linkedin.com/company/3361876/" target="_blank"><img
