@@ -95,6 +95,7 @@
                 axios.get(url).then(function (response) {
                     self.company = response.data.company;
                     self.name = response.data.name;
+                    self.website = response.data.website;
                     self.lastName = response.data.lastname;
                     self.email1 = response.data.email1;
                     self.email2 = response.data.email2;
