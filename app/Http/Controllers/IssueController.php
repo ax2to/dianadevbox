@@ -73,9 +73,10 @@ class IssueController extends Controller
         $issue->reported_by = Auth::id();
         $issue->save();
 
-        flash(sprintf('The issue, %s, was created successfully.', $issue->summary))->success();
+        $link = link_to_route('issues.show', $issue->summary, [$issue]);
+        flash(sprintf('The issue, %s, was created successfully.', $link))->success();
 
-        return redirect()->route('issues.index');
+        return redirect()->route('issues.index', ['assign_to' => auth()->id()]);
     }
 
     /**
