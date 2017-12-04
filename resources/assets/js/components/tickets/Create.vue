@@ -105,8 +105,8 @@
             this.$root.$on('newTicket', function () {
                 self.display = true;
             });
-            this.$root.$on('changePipeline', function (id) {
-                self.pipeline = id;
+            this.$root.$on('changePipeline', function (user_id, pipeline) {
+                self.pipeline = pipeline;
             });
         }
     }
