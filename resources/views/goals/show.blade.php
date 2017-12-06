@@ -29,6 +29,7 @@
                         <table class="table table-responsive">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Issue</th>
                                 <th>Status</th>
                                 <th>Resolution</th>
@@ -44,6 +45,7 @@
                                         @elseif($issue->status_id == 4) class="warning"
                                         @elseif($issue->resolution_id == 5 || $issue->resolution_id == 6) class="danger"
                                         @endif>
+                                    <td>{{ $issue->id }}</td>
                                     <td>{{ link_to_route('issues.show',$issue->summary,[$issue]) }}</td>
                                     <td>{{ $issue->status->name }}</td>
                                     <td>{{ $issue->resolution->name }}</td>
