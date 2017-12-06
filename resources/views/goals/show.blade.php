@@ -39,7 +39,11 @@
                             </thead>
                             <tbody>
                             @foreach($goal->issues()->orderBy('summary')->get() as $issue)
-                                <tr>
+                                <tr
+                                        @if($issue->resolution_id == 1 || $issue->resolution_id == 2 ) class="success"
+                                        @elseif($issue->status_id == 4) class="warning"
+                                        @elseif($issue->resolution_id == 5 || $issue->resolution_id == 6) class="danger"
+                                        @endif>
                                     <td>{{ link_to_route('issues.show',$issue->summary,[$issue]) }}</td>
                                     <td>{{ $issue->status->name }}</td>
                                     <td>{{ $issue->resolution->name }}</td>
